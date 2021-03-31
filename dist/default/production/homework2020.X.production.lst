@@ -1,0 +1,2789 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.33 build 59893 
+                                                                                               Fri Jan 22 22:36:54 2021
+
+Microchip Technology Omniscient Code Generator (Lite mode) build 59893
+     1                           	processor	18F45K22
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1
+     6                           	psect	mediumconst,global,reloc=2,class=MEDIUMCONST,delta=1
+     7                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     8                           	psect	bitbssCOMRAM,global,bit,class=COMRAM,space=1,delta=1
+     9                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1
+    10                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1
+    11                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+    12                           	psect	bssBANK1,global,class=BANK1,space=1,delta=1
+    13                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+    14                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    19                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    20                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    21                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    22                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    23                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    24                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    25                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    26                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    27  0000                     
+    28                           	psect	idataCOMRAM
+    29  000720                     __pidataCOMRAM:
+    30                           	opt stack 0
+    31                           
+    32                           ;initializer for _adr
+    33  000720  0007               	dw	7
+    34                           
+    35                           	psect	mediumconst
+    36  007DFE                     __pmediumconst:
+    37                           	opt stack 0
+    38  007DFE  00                 	db	0
+    39  007DFF                     CRC16@wCRCTable:
+    40                           	opt stack 0
+    41  007DFF  0000               	dw	0
+    42  007E01  C0C1               	dw	49345
+    43  007E03  C181               	dw	49537
+    44  007E05  0140               	dw	320
+    45  007E07  C301               	dw	49921
+    46  007E09  03C0               	dw	960
+    47  007E0B  0280               	dw	640
+    48  007E0D  C241               	dw	49729
+    49  007E0F  C601               	dw	50689
+    50  007E11  06C0               	dw	1728
+    51  007E13  0780               	dw	1920
+    52  007E15  C741               	dw	51009
+    53  007E17  0500               	dw	1280
+    54  007E19  C5C1               	dw	50625
+    55  007E1B  C481               	dw	50305
+    56  007E1D  0440               	dw	1088
+    57  007E1F  CC01               	dw	52225
+    58  007E21  0CC0               	dw	3264
+    59  007E23  0D80               	dw	3456
+    60  007E25  CD41               	dw	52545
+    61  007E27  0F00               	dw	3840
+    62  007E29  CFC1               	dw	53185
+    63  007E2B  CE81               	dw	52865
+    64  007E2D  0E40               	dw	3648
+    65  007E2F  0A00               	dw	2560
+    66  007E31  CAC1               	dw	51905
+    67  007E33  CB81               	dw	52097
+    68  007E35  0B40               	dw	2880
+    69  007E37  C901               	dw	51457
+    70  007E39  09C0               	dw	2496
+    71  007E3B  0880               	dw	2176
+    72  007E3D  C841               	dw	51265
+    73  007E3F  D801               	dw	55297
+    74  007E41  18C0               	dw	6336
+    75  007E43  1980               	dw	6528
+    76  007E45  D941               	dw	55617
+    77  007E47  1B00               	dw	6912
+    78  007E49  DBC1               	dw	56257
+    79  007E4B  DA81               	dw	55937
+    80  007E4D  1A40               	dw	6720
+    81  007E4F  1E00               	dw	7680
+    82  007E51  DEC1               	dw	57025
+    83  007E53  DF81               	dw	57217
+    84  007E55  1F40               	dw	8000
+    85  007E57  DD01               	dw	56577
+    86  007E59  1DC0               	dw	7616
+    87  007E5B  1C80               	dw	7296
+    88  007E5D  DC41               	dw	56385
+    89  007E5F  1400               	dw	5120
+    90  007E61  D4C1               	dw	54465
+    91  007E63  D581               	dw	54657
+    92  007E65  1540               	dw	5440
+    93  007E67  D701               	dw	55041
+    94  007E69  17C0               	dw	6080
+    95  007E6B  1680               	dw	5760
+    96  007E6D  D641               	dw	54849
+    97  007E6F  D201               	dw	53761
+    98  007E71  12C0               	dw	4800
+    99  007E73  1380               	dw	4992
+   100  007E75  D341               	dw	54081
+   101  007E77  1100               	dw	4352
+   102  007E79  D1C1               	dw	53697
+   103  007E7B  D081               	dw	53377
+   104  007E7D  1040               	dw	4160
+   105  007E7F  F001               	dw	61441
+   106  007E81  30C0               	dw	12480
+   107  007E83  3180               	dw	12672
+   108  007E85  F141               	dw	61761
+   109  007E87  3300               	dw	13056
+   110  007E89  F3C1               	dw	62401
+   111  007E8B  F281               	dw	62081
+   112  007E8D  3240               	dw	12864
+   113  007E8F  3600               	dw	13824
+   114  007E91  F6C1               	dw	63169
+   115  007E93  F781               	dw	63361
+   116  007E95  3740               	dw	14144
+   117  007E97  F501               	dw	62721
+   118  007E99  35C0               	dw	13760
+   119  007E9B  3480               	dw	13440
+   120  007E9D  F441               	dw	62529
+   121  007E9F  3C00               	dw	15360
+   122  007EA1  FCC1               	dw	64705
+   123  007EA3  FD81               	dw	64897
+   124  007EA5  3D40               	dw	15680
+   125  007EA7  FF01               	dw	65281
+   126  007EA9  3FC0               	dw	16320
+   127  007EAB  3E80               	dw	16000
+   128  007EAD  FE41               	dw	65089
+   129  007EAF  FA01               	dw	64001
+   130  007EB1  3AC0               	dw	15040
+   131  007EB3  3B80               	dw	15232
+   132  007EB5  FB41               	dw	64321
+   133  007EB7  3900               	dw	14592
+   134  007EB9  F9C1               	dw	63937
+   135  007EBB  F881               	dw	63617
+   136  007EBD  3840               	dw	14400
+   137  007EBF  2800               	dw	10240
+   138  007EC1  E8C1               	dw	59585
+   139  007EC3  E981               	dw	59777
+   140  007EC5  2940               	dw	10560
+   141  007EC7  EB01               	dw	60161
+   142  007EC9  2BC0               	dw	11200
+   143  007ECB  2A80               	dw	10880
+   144  007ECD  EA41               	dw	59969
+   145  007ECF  EE01               	dw	60929
+   146  007ED1  2EC0               	dw	11968
+   147  007ED3  2F80               	dw	12160
+   148  007ED5  EF41               	dw	61249
+   149  007ED7  2D00               	dw	11520
+   150  007ED9  EDC1               	dw	60865
+   151  007EDB  EC81               	dw	60545
+   152  007EDD  2C40               	dw	11328
+   153  007EDF  E401               	dw	58369
+   154  007EE1  24C0               	dw	9408
+   155  007EE3  2580               	dw	9600
+   156  007EE5  E541               	dw	58689
+   157  007EE7  2700               	dw	9984
+   158  007EE9  E7C1               	dw	59329
+   159  007EEB  E681               	dw	59009
+   160  007EED  2640               	dw	9792
+   161  007EEF  2200               	dw	8704
+   162  007EF1  E2C1               	dw	58049
+   163  007EF3  E381               	dw	58241
+   164  007EF5  2340               	dw	9024
+   165  007EF7  E101               	dw	57601
+   166  007EF9  21C0               	dw	8640
+   167  007EFB  2080               	dw	8320
+   168  007EFD  E041               	dw	57409
+   169  007EFF  A001               	dw	40961
+   170  007F01  60C0               	dw	24768
+   171  007F03  6180               	dw	24960
+   172  007F05  A141               	dw	41281
+   173  007F07  6300               	dw	25344
+   174  007F09  A3C1               	dw	41921
+   175  007F0B  A281               	dw	41601
+   176  007F0D  6240               	dw	25152
+   177  007F0F  6600               	dw	26112
+   178  007F11  A6C1               	dw	42689
+   179  007F13  A781               	dw	42881
+   180  007F15  6740               	dw	26432
+   181  007F17  A501               	dw	42241
+   182  007F19  65C0               	dw	26048
+   183  007F1B  6480               	dw	25728
+   184  007F1D  A441               	dw	42049
+   185  007F1F  6C00               	dw	27648
+   186  007F21  ACC1               	dw	44225
+   187  007F23  AD81               	dw	44417
+   188  007F25  6D40               	dw	27968
+   189  007F27  AF01               	dw	44801
+   190  007F29  6FC0               	dw	28608
+   191  007F2B  6E80               	dw	28288
+   192  007F2D  AE41               	dw	44609
+   193  007F2F  AA01               	dw	43521
+   194  007F31  6AC0               	dw	27328
+   195  007F33  6B80               	dw	27520
+   196  007F35  AB41               	dw	43841
+   197  007F37  6900               	dw	26880
+   198  007F39  A9C1               	dw	43457
+   199  007F3B  A881               	dw	43137
+   200  007F3D  6840               	dw	26688
+   201  007F3F  7800               	dw	30720
+   202  007F41  B8C1               	dw	47297
+   203  007F43  B981               	dw	47489
+   204  007F45  7940               	dw	31040
+   205  007F47  BB01               	dw	47873
+   206  007F49  7BC0               	dw	31680
+   207  007F4B  7A80               	dw	31360
+   208  007F4D  BA41               	dw	47681
+   209  007F4F  BE01               	dw	48641
+   210  007F51  7EC0               	dw	32448
+   211  007F53  7F80               	dw	32640
+   212  007F55  BF41               	dw	48961
+   213  007F57  7D00               	dw	32000
+   214  007F59  BDC1               	dw	48577
+   215  007F5B  BC81               	dw	48257
+   216  007F5D  7C40               	dw	31808
+   217  007F5F  B401               	dw	46081
+   218  007F61  74C0               	dw	29888
+   219  007F63  7580               	dw	30080
+   220  007F65  B541               	dw	46401
+   221  007F67  7700               	dw	30464
+   222  007F69  B7C1               	dw	47041
+   223  007F6B  B681               	dw	46721
+   224  007F6D  7640               	dw	30272
+   225  007F6F  7200               	dw	29184
+   226  007F71  B2C1               	dw	45761
+   227  007F73  B381               	dw	45953
+   228  007F75  7340               	dw	29504
+   229  007F77  B101               	dw	45313
+   230  007F79  71C0               	dw	29120
+   231  007F7B  7080               	dw	28800
+   232  007F7D  B041               	dw	45121
+   233  007F7F  5000               	dw	20480
+   234  007F81  90C1               	dw	37057
+   235  007F83  9181               	dw	37249
+   236  007F85  5140               	dw	20800
+   237  007F87  9301               	dw	37633
+   238  007F89  53C0               	dw	21440
+   239  007F8B  5280               	dw	21120
+   240  007F8D  9241               	dw	37441
+   241  007F8F  9601               	dw	38401
+   242  007F91  56C0               	dw	22208
+   243  007F93  5780               	dw	22400
+   244  007F95  9741               	dw	38721
+   245  007F97  5500               	dw	21760
+   246  007F99  95C1               	dw	38337
+   247  007F9B  9481               	dw	38017
+   248  007F9D  5440               	dw	21568
+   249  007F9F  9C01               	dw	39937
+   250  007FA1  5CC0               	dw	23744
+   251  007FA3  5D80               	dw	23936
+   252  007FA5  9D41               	dw	40257
+   253  007FA7  5F00               	dw	24320
+   254  007FA9  9FC1               	dw	40897
+   255  007FAB  9E81               	dw	40577
+   256  007FAD  5E40               	dw	24128
+   257  007FAF  5A00               	dw	23040
+   258  007FB1  9AC1               	dw	39617
+   259  007FB3  9B81               	dw	39809
+   260  007FB5  5B40               	dw	23360
+   261  007FB7  9901               	dw	39169
+   262  007FB9  59C0               	dw	22976
+   263  007FBB  5880               	dw	22656
+   264  007FBD  9841               	dw	38977
+   265  007FBF  8801               	dw	34817
+   266  007FC1  48C0               	dw	18624
+   267  007FC3  4980               	dw	18816
+   268  007FC5  8941               	dw	35137
+   269  007FC7  4B00               	dw	19200
+   270  007FC9  8BC1               	dw	35777
+   271  007FCB  8A81               	dw	35457
+   272  007FCD  4A40               	dw	19008
+   273  007FCF  4E00               	dw	19968
+   274  007FD1  8EC1               	dw	36545
+   275  007FD3  8F81               	dw	36737
+   276  007FD5  4F40               	dw	20288
+   277  007FD7  8D01               	dw	36097
+   278  007FD9  4DC0               	dw	19904
+   279  007FDB  4C80               	dw	19584
+   280  007FDD  8C41               	dw	35905
+   281  007FDF  4400               	dw	17408
+   282  007FE1  84C1               	dw	33985
+   283  007FE3  8581               	dw	34177
+   284  007FE5  4540               	dw	17728
+   285  007FE7  8701               	dw	34561
+   286  007FE9  47C0               	dw	18368
+   287  007FEB  4680               	dw	18048
+   288  007FED  8641               	dw	34369
+   289  007FEF  8201               	dw	33281
+   290  007FF1  42C0               	dw	17088
+   291  007FF3  4380               	dw	17280
+   292  007FF5  8341               	dw	33601
+   293  007FF7  4100               	dw	16640
+   294  007FF9  81C1               	dw	33217
+   295  007FFB  8081               	dw	32897
+   296  007FFD  4040               	dw	16448
+   297  007FFF                     __end_ofCRC16@wCRCTable:
+   298                           	opt stack 0
+   299  0000                     _TMR0	set	4054
+   300  0000                     _ANSELC	set	3898
+   301  0000                     _BAUDCONbits	set	4024
+   302  0000                     _PORTC	set	3970
+   303  0000                     _PORTCbits	set	3970
+   304  0000                     _RCREG	set	4014
+   305  0000                     _RCSTAbits	set	4011
+   306  0000                     _SPBRG	set	4015
+   307  0000                     _SSPADD	set	4040
+   308  0000                     _SSPBUF	set	4041
+   309  0000                     _SSPCON1	set	4038
+   310  0000                     _SSPCON2	set	4037
+   311  0000                     _SSPCON2bits	set	4037
+   312  0000                     _SSPSTAT	set	4039
+   313  0000                     _SSPSTATbits	set	4039
+   314  0000                     _T0CON	set	4053
+   315  0000                     _TRISC	set	3988
+   316  0000                     _TXREG	set	4013
+   317  0000                     _TXSTAbits	set	4012
+   318  0000                     _BCLIF	set	32011
+   319  0000                     _GIE	set	32663
+   320  0000                     _PEIE	set	32662
+   321  0000                     _RC1IF	set	31989
+   322  0000                     _RCIE	set	31981
+   323  0000                     _RCIP	set	31997
+   324  0000                     _SSPIE	set	31979
+   325  0000                     _SSPIF	set	31987
+   326  0000                     _TMR0IE	set	32661
+   327  0000                     _TMR0IF	set	32658
+   328  0000                     _TRISC3	set	31907
+   329  0000                     _TRISC4	set	31908
+   330                           
+   331                           ; #config settings
+   332  007FFF  00                 	db	0	; dummy byte at the end
+   333  0000                     
+   334                           	psect	cinit
+   335  00062E                     __pcinit:
+   336                           	opt stack 0
+   337  00062E                     start_initialization:
+   338                           	opt stack 0
+   339  00062E                     __initialization:
+   340                           	opt stack 0
+   341                           
+   342                           ; Clear objects allocated to BANK1 (70 bytes)
+   343  00062E  EE01  F000         	lfsr	0,__pbssBANK1
+   344  000632  0E46               	movlw	70
+   345  000634                     clear_0:
+   346  000634  6AEE               	clrf	postinc0,c
+   347  000636  06E8               	decf	wreg,f,c
+   348  000638  E1FD               	bnz	clear_0
+   349                           
+   350                           ; Clear objects allocated to BANK0 (115 bytes)
+   351  00063A  EE00  F060         	lfsr	0,__pbssBANK0
+   352  00063E  0E73               	movlw	115
+   353  000640                     clear_1:
+   354  000640  6AEE               	clrf	postinc0,c
+   355  000642  06E8               	decf	wreg,f,c
+   356  000644  E1FD               	bnz	clear_1
+   357                           
+   358                           ; Clear objects allocated to BITCOMRAM (1 bytes)
+   359  000646  6A40               	clrf	(__pbitbssCOMRAM/(0+8))& (0+255),c
+   360                           
+   361                           ; Clear objects allocated to COMRAM (22 bytes)
+   362  000648  EE00  F02A         	lfsr	0,__pbssCOMRAM
+   363  00064C  0E16               	movlw	22
+   364  00064E                     clear_2:
+   365  00064E  6AEE               	clrf	postinc0,c
+   366  000650  06E8               	decf	wreg,f,c
+   367  000652  E1FD               	bnz	clear_2
+   368                           
+   369                           ; Initialize objects allocated to COMRAM (2 bytes)
+   370                           ; load TBLPTR registers with __pidataCOMRAM
+   371  000654  0E20               	movlw	low __pidataCOMRAM
+   372  000656  6EF6               	movwf	tblptrl,c
+   373  000658  0E07               	movlw	high __pidataCOMRAM
+   374  00065A  6EF7               	movwf	tblptrh,c
+   375  00065C  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+   376  00065E  6EF8               	movwf	tblptru,c
+   377  000660  0009               	tblrd		*+	;fetch initializer
+   378  000662  CFF5 F041          	movff	tablat,__pdataCOMRAM
+   379  000666  0009               	tblrd		*+	;fetch initializer
+   380  000668  CFF5 F042          	movff	tablat,__pdataCOMRAM+1
+   381  00066C                     end_of_initialization:
+   382                           	opt stack 0
+   383  00066C                     __end_of__initialization:
+   384                           	opt stack 0
+   385  00066C  0E00               	movlw	low (__Lmediumconst shr (0+16))
+   386  00066E  6EF8               	movwf	tblptru,c
+   387  000670  0100               	movlb	0
+   388  000672  EFB6  F000         	goto	_main	;jump to C main() function
+   389                           tblptru	equ	0xFF8
+   390                           tblptrh	equ	0xFF7
+   391                           tblptrl	equ	0xFF6
+   392                           tablat	equ	0xFF5
+   393                           postinc0	equ	0xFEE
+   394                           wreg	equ	0xFE8
+   395                           
+   396                           	psect	bitbssCOMRAM
+   397  000200                     __pbitbssCOMRAM:
+   398                           	opt stack 0
+   399  000200                     _rcv_flag:
+   400                           	opt stack 0
+   401  000200                     	ds	1
+   402  000201                     _tx_flag:
+   403                           	opt stack 0
+   404  000201                     	ds	1
+   405                           tblptru	equ	0xFF8
+   406                           tblptrh	equ	0xFF7
+   407                           tblptrl	equ	0xFF6
+   408                           tablat	equ	0xFF5
+   409                           postinc0	equ	0xFEE
+   410                           wreg	equ	0xFE8
+   411                           
+   412                           	psect	bssCOMRAM
+   413  00002A                     __pbssCOMRAM:
+   414                           	opt stack 0
+   415  00002A                     _rcv_cnt:
+   416                           	opt stack 0
+   417  00002A                     	ds	2
+   418  00002C                     _rcv_len:
+   419                           	opt stack 0
+   420  00002C                     	ds	2
+   421  00002E                     _timeout_cnt:
+   422                           	opt stack 0
+   423  00002E                     	ds	2
+   424  000030                     _tx_cnt:
+   425                           	opt stack 0
+   426  000030                     	ds	2
+   427  000032                     _tx_len:
+   428                           	opt stack 0
+   429  000032                     	ds	2
+   430  000034                     _v2:
+   431                           	opt stack 0
+   432  000034                     	ds	2
+   433  000036                     _v3:
+   434                           	opt stack 0
+   435  000036                     	ds	2
+   436  000038                     _v4:
+   437                           	opt stack 0
+   438  000038                     	ds	2
+   439  00003A                     _v5:
+   440                           	opt stack 0
+   441  00003A                     	ds	2
+   442  00003C                     _v1:
+   443                           	opt stack 0
+   444  00003C                     	ds	1
+   445  00003D                     _var2:
+   446                           	opt stack 0
+   447  00003D                     	ds	1
+   448  00003E                     _x:
+   449                           	opt stack 0
+   450  00003E                     	ds	2
+   451                           tblptru	equ	0xFF8
+   452                           tblptrh	equ	0xFF7
+   453                           tblptrl	equ	0xFF6
+   454                           tablat	equ	0xFF5
+   455                           postinc0	equ	0xFEE
+   456                           wreg	equ	0xFE8
+   457                           
+   458                           	psect	dataCOMRAM
+   459  000041                     __pdataCOMRAM:
+   460                           	opt stack 0
+   461  000041                     _adr:
+   462                           	opt stack 0
+   463  000041                     	ds	2
+   464                           tblptru	equ	0xFF8
+   465                           tblptrh	equ	0xFF7
+   466                           tblptrl	equ	0xFF6
+   467                           tablat	equ	0xFF5
+   468                           postinc0	equ	0xFEE
+   469                           wreg	equ	0xFE8
+   470                           
+   471                           	psect	bssBANK0
+   472  000060                     __pbssBANK0:
+   473                           	opt stack 0
+   474  000060                     _rcv_buf:
+   475                           	opt stack 0
+   476  000060                     	ds	45
+   477  00008D                     _tx_buf:
+   478                           	opt stack 0
+   479  00008D                     	ds	70
+   480                           tblptru	equ	0xFF8
+   481                           tblptrh	equ	0xFF7
+   482                           tblptrl	equ	0xFF6
+   483                           tablat	equ	0xFF5
+   484                           postinc0	equ	0xFEE
+   485                           wreg	equ	0xFE8
+   486                           
+   487                           	psect	bssBANK1
+   488  000100                     __pbssBANK1:
+   489                           	opt stack 0
+   490  000100                     _v7:
+   491                           	opt stack 0
+   492  000100                     	ds	70
+   493                           tblptru	equ	0xFF8
+   494                           tblptrh	equ	0xFF7
+   495                           tblptrl	equ	0xFF6
+   496                           tablat	equ	0xFF5
+   497                           postinc0	equ	0xFEE
+   498                           wreg	equ	0xFE8
+   499                           
+   500                           	psect	cstackCOMRAM
+   501  000001                     __pcstackCOMRAM:
+   502                           	opt stack 0
+   503  000001                     ??_isr:
+   504  000001                     
+   505                           ; 1 bytes @ 0x0
+   506  000001                     	ds	16
+   507  000011                     ?_CRC16:
+   508                           	opt stack 0
+   509  000011                     I2C_Write@data:
+   510                           	opt stack 0
+   511  000011                     I2C_Read@flag:
+   512                           	opt stack 0
+   513  000011                     CRC16@nData:
+   514                           	opt stack 0
+   515                           
+   516                           ; 2 bytes @ 0x10
+   517  000011                     	ds	1
+   518  000012                     I2C_Start@slave_write_address:
+   519                           	opt stack 0
+   520  000012                     I2C_Read@buffer:
+   521                           	opt stack 0
+   522                           
+   523                           ; 2 bytes @ 0x11
+   524  000012                     	ds	1
+   525  000013                     CRC16@wLength:
+   526                           	opt stack 0
+   527                           
+   528                           ; 2 bytes @ 0x12
+   529  000013                     	ds	2
+   530  000015                     ??_CRC16:
+   531                           
+   532                           ; 0 bytes @ 0x14
+   533  000015                     	ds	2
+   534  000017                     CRC16@nTemp:
+   535                           	opt stack 0
+   536                           
+   537                           ; 1 bytes @ 0x16
+   538  000017                     	ds	1
+   539  000018                     CRC16@wCRCWord:
+   540                           	opt stack 0
+   541                           
+   542                           ; 2 bytes @ 0x17
+   543  000018                     	ds	2
+   544  00001A                     
+   545                           ; 2 bytes @ 0x19
+   546  00001A                     	ds	2
+   547  00001C                     
+   548                           ; 3 bytes @ 0x1B
+   549  00001C                     	ds	3
+   550  00001F                     ??_main:
+   551                           
+   552                           ; 0 bytes @ 0x1E
+   553  00001F                     	ds	5
+   554  000024                     main@i_909:
+   555                           	opt stack 0
+   556                           
+   557                           ; 2 bytes @ 0x23
+   558  000024                     	ds	2
+   559  000026                     main@i:
+   560                           	opt stack 0
+   561                           
+   562                           ; 2 bytes @ 0x25
+   563  000026                     	ds	2
+   564  000028                     main@q:
+   565                           	opt stack 0
+   566                           
+   567                           ; 2 bytes @ 0x27
+   568  000028                     	ds	2
+   569                           tblptru	equ	0xFF8
+   570                           tblptrh	equ	0xFF7
+   571                           tblptrl	equ	0xFF6
+   572                           tablat	equ	0xFF5
+   573                           postinc0	equ	0xFEE
+   574                           wreg	equ	0xFE8
+   575                           
+   576 ;;
+   577 ;;Main: autosize = 0, tempsize = 5, incstack = 0, save=0
+   578 ;;
+   579 ;; *************** function _main *****************
+   580 ;; Defined at:
+   581 ;;		line 45 in file "newmain.c"
+   582 ;; Parameters:    Size  Location     Type
+   583 ;;  argc            2   25[COMRAM] int 
+   584 ;;  argv            3   27[COMRAM] PTR PTR unsigned char 
+   585 ;; Auto vars:     Size  Location     Type
+   586 ;;  i               2   35[COMRAM] int 
+   587 ;;  q               2   39[COMRAM] int 
+   588 ;;  i               2   37[COMRAM] int 
+   589 ;; Return value:  Size  Location     Type
+   590 ;;                  2   25[COMRAM] int 
+   591 ;; Registers used:
+   592 ;;		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+   593 ;; Tracked objects:
+   594 ;;		On entry : 0/0
+   595 ;;		On exit  : 0/0
+   596 ;;		Unchanged: 0/0
+   597 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   598 ;;      Params:         5       0       0       0       0       0       0
+   599 ;;      Locals:         6       0       0       0       0       0       0
+   600 ;;      Temps:          5       0       0       0       0       0       0
+   601 ;;      Totals:        16       0       0       0       0       0       0
+   602 ;;Total ram usage:       16 bytes
+   603 ;; Hardware stack levels required when called:    4
+   604 ;; This function calls:
+   605 ;;		_CRC16
+   606 ;;		_I2C_Init
+   607 ;;		_I2C_Read
+   608 ;;		_I2C_Start
+   609 ;;		_I2C_Stop
+   610 ;;		_I2C_Write
+   611 ;; This function is called by:
+   612 ;;		Startup code after reset
+   613 ;; This function uses a non-reentrant model
+   614 ;;
+   615                           
+   616                           	psect	text0
+   617  00016C                     __ptext0:
+   618                           	opt stack 0
+   619  00016C                     _main:
+   620                           	opt stack 27
+   621                           
+   622                           ;newmain.c: 48: ANSELC = 0;
+   623                           
+   624                           ;incstack = 0
+   625  00016C  0E00               	movlw	0
+   626  00016E  010F               	movlb	15	; () banked
+   627  000170  6F3A               	movwf	58,b	;volatile
+   628                           
+   629                           ;newmain.c: 49: TRISC = 0x9F;
+   630  000172  0E9F               	movlw	159
+   631  000174  6E94               	movwf	3988,c	;volatile
+   632                           
+   633                           ;newmain.c: 50: PORTC = 0x00;
+   634  000176  0E00               	movlw	0
+   635  000178  6E82               	movwf	3970,c	;volatile
+   636                           
+   637                           ; BSR set to: 15
+   638                           ;newmain.c: 52: BAUDCONbits.BRG16 = 0;
+   639  00017A  96B8               	bcf	4024,3,c	;volatile
+   640                           
+   641                           ; BSR set to: 15
+   642                           ;newmain.c: 53: TXSTAbits.BRGH = 0;
+   643  00017C  94AC               	bcf	4012,2,c	;volatile
+   644                           
+   645                           ;newmain.c: 54: SPBRG = 12;
+   646  00017E  0E0C               	movlw	12
+   647  000180  6EAF               	movwf	4015,c	;volatile
+   648                           
+   649                           ; BSR set to: 15
+   650                           ;newmain.c: 56: TXSTAbits.TXEN = 1;
+   651  000182  8AAC               	bsf	4012,5,c	;volatile
+   652                           
+   653                           ; BSR set to: 15
+   654                           ;newmain.c: 57: RCSTAbits.CREN = 1;
+   655  000184  88AB               	bsf	4011,4,c	;volatile
+   656                           
+   657                           ; BSR set to: 15
+   658                           ;newmain.c: 58: TXSTAbits.SYNC = 0;
+   659  000186  98AC               	bcf	4012,4,c	;volatile
+   660                           
+   661                           ; BSR set to: 15
+   662                           ;newmain.c: 59: RCSTAbits.SPEN = 1;
+   663  000188  8EAB               	bsf	4011,7,c	;volatile
+   664                           
+   665                           ; BSR set to: 15
+   666                           ;newmain.c: 61: RCIE = 1;
+   667  00018A  8A9D               	bsf	3997,5,c	;volatile
+   668                           
+   669                           ; BSR set to: 15
+   670                           ;newmain.c: 62: RCIP = 1;
+   671  00018C  8A9F               	bsf	3999,5,c	;volatile
+   672                           
+   673                           ;newmain.c: 64: T0CON = 0xC3;
+   674  00018E  0EC3               	movlw	195
+   675  000190  6ED5               	movwf	4053,c	;volatile
+   676                           
+   677                           ; BSR set to: 15
+   678                           ;newmain.c: 65: TMR0IE = 1;
+   679  000192  8AF2               	bsf	intcon,5,c	;volatile
+   680                           
+   681                           ; BSR set to: 15
+   682                           ;newmain.c: 67: PEIE = 1;
+   683  000194  8CF2               	bsf	intcon,6,c	;volatile
+   684                           
+   685                           ; BSR set to: 15
+   686                           ;newmain.c: 68: GIE = 1;
+   687  000196  8EF2               	bsf	intcon,7,c	;volatile
+   688  000198                     l1246:
+   689                           
+   690                           ;newmain.c: 73: if (rcv_flag) {
+   691  000198  0100               	movlb	(_rcv_flag/(0+8)) shr (0+8)
+   692  00019A  A040               	btfss	_rcv_flag/(0+8),_rcv_flag& (0+7),c
+   693  00019C  D7FD               	goto	l1246
+   694                           
+   695                           ;newmain.c: 74: if (rcv_buf[1] == 0x03) {
+   696  00019E  0100               	movlb	0	; () banked
+   697  0001A0  5161               	movf	(_rcv_buf+1)& (0+255),w,b
+   698  0001A2  0A03               	xorlw	3
+   699  0001A4  A4D8               	btfss	status,2,c
+   700  0001A6  D0C6               	goto	l1304
+   701                           
+   702                           ; BSR set to: 0
+   703                           ;newmain.c: 75: if ((rcv_buf[2] == 0x00 & rcv_buf[3] > 0x40) || (rcv_buf[5] > 0x40)) {
+   704  0001A8  0100               	movlb	0	; () banked
+   705  0001AA  6762               	tstfsz	(_rcv_buf+2)& (0+255),b
+   706  0001AC  D005               	goto	l1254
+   707                           
+   708                           ; BSR set to: 0
+   709  0001AE  0E41               	movlw	65
+   710  0001B0  0100               	movlb	0	; () banked
+   711  0001B2  5D63               	subwf	(_rcv_buf+3)& (0+255),w,b
+   712  0001B4  B0D8               	btfsc	status,0,c
+   713  0001B6  D006               	goto	l1256
+   714  0001B8                     l1254:
+   715                           
+   716                           ; BSR set to: 0
+   717  0001B8  0100               	movlb	0	; () banked
+   718  0001BA  EE20  F065         	lfsr	2,_rcv_buf+5
+   719  0001BE  0E40               	movlw	64
+   720  0001C0  64DF               	cpfsgt	indf2,c
+   721  0001C2  D016               	goto	l122
+   722  0001C4                     l1256:
+   723                           
+   724                           ; BSR set to: 0
+   725                           ;newmain.c: 76: tx_buf[0] = 0x07;
+   726  0001C4  0E07               	movlw	7
+   727  0001C6  0100               	movlb	0	; () banked
+   728  0001C8  6F8D               	movwf	_tx_buf& (0+255),b
+   729                           
+   730                           ;newmain.c: 77: tx_buf[1] = 0x81;
+   731  0001CA  0E81               	movlw	129
+   732  0001CC  0100               	movlb	0	; () banked
+   733  0001CE  6F8E               	movwf	(_tx_buf+1)& (0+255),b
+   734                           
+   735                           ;newmain.c: 78: tx_buf[2] = 0x02;
+   736  0001D0  0E02               	movlw	2
+   737  0001D2  0100               	movlb	0	; () banked
+   738  0001D4  6F8F               	movwf	(_tx_buf+2)& (0+255),b
+   739                           
+   740                           ; BSR set to: 0
+   741                           ;newmain.c: 79: x = CRC16(tx_buf, 3);
+   742  0001D6  0100               	movlb	0	; () banked
+   743  0001D8  0E00               	movlw	high _tx_buf
+   744  0001DA  6E12               	movwf	CRC16@nData+1,c
+   745  0001DC  0100               	movlb	0	; () banked
+   746  0001DE  0E8D               	movlw	low _tx_buf
+   747  0001E0  6E11               	movwf	CRC16@nData,c
+   748  0001E2  0E00               	movlw	0
+   749  0001E4  6E14               	movwf	CRC16@wLength+1,c
+   750  0001E6  0E03               	movlw	3
+   751  0001E8  6E13               	movwf	CRC16@wLength,c
+   752  0001EA  ECE9  F002         	call	_CRC16	;wreg free
+   753  0001EE  D1DA               	goto	L6
+   754  0001F0                     l122:
+   755                           
+   756                           ; BSR set to: 0
+   757                           ;newmain.c: 84: tx_buf[0] = rcv_buf[0];
+   758  0001F0  C060  F08D         	movff	_rcv_buf,_tx_buf
+   759                           
+   760                           ;newmain.c: 85: tx_buf[1] = rcv_buf[1];
+   761  0001F4  C061  F08E         	movff	_rcv_buf+1,_tx_buf+1
+   762                           
+   763                           ; BSR set to: 0
+   764                           ;newmain.c: 86: v5 = rcv_buf[5]*2;
+   765  0001F8  0100               	movlb	0	; () banked
+   766  0001FA  5165               	movf	(_rcv_buf+5)& (0+255),w,b
+   767  0001FC  0D02               	mullw	2
+   768  0001FE  CFF3 F03A          	movff	prodl,_v5
+   769  000202  CFF4 F03B          	movff	prodh,_v5+1
+   770                           
+   771                           ; BSR set to: 0
+   772                           ;newmain.c: 87: tx_buf[2] = v5;
+   773  000206  C03A  F08F         	movff	_v5,_tx_buf+2
+   774                           
+   775                           ; BSR set to: 0
+   776                           ;newmain.c: 88: GIE = 0;
+   777  00020A  9EF2               	bcf	intcon,7,c	;volatile
+   778                           
+   779                           ; BSR set to: 0
+   780                           ;newmain.c: 89: I2C_Init();
+   781  00020C  EC51  F003         	call	_I2C_Init	;wreg free
+   782                           
+   783                           ;newmain.c: 90: for (int i = rcv_buf[3]; i < v5; i++) {
+   784  000210  0100               	movlb	0	; () banked
+   785  000212  C063  F026         	movff	_rcv_buf+3,main@i
+   786  000216  6A27               	clrf	main@i+1,c
+   787  000218  D01B               	goto	l1288
+   788  00021A                     l1276:
+   789                           
+   790                           ;newmain.c: 92: I2C_Start(0xA0);
+   791  00021A  0EA0               	movlw	160
+   792  00021C  EC61  F003         	call	_I2C_Start
+   793                           
+   794                           ;newmain.c: 93: I2C_Write(i);
+   795  000220  5026               	movf	main@i,w,c
+   796  000222  EC6C  F003         	call	_I2C_Write
+   797                           
+   798                           ;newmain.c: 94: I2C_Stop();
+   799  000226  EC77  F003         	call	_I2C_Stop	;wreg free
+   800                           
+   801                           ;newmain.c: 95: I2C_Start(0xA1);
+   802  00022A  0EA1               	movlw	161
+   803  00022C  EC61  F003         	call	_I2C_Start
+   804                           
+   805                           ;newmain.c: 96: v7[i] = I2C_Read(1);
+   806  000230  0101               	movlb	1	; () banked
+   807  000232  0E00               	movlw	low _v7
+   808  000234  2426               	addwf	main@i,w,c
+   809  000236  6ED9               	movwf	fsr2l,c
+   810  000238  0101               	movlb	1	; () banked
+   811  00023A  0E01               	movlw	high _v7
+   812  00023C  2027               	addwfc	main@i+1,w,c
+   813  00023E  6EDA               	movwf	fsr2h,c
+   814  000240  0E01               	movlw	1
+   815  000242  EC3B  F003         	call	_I2C_Read
+   816  000246  6EDF               	movwf	indf2,c
+   817                           
+   818                           ;newmain.c: 97: I2C_Stop();
+   819  000248  EC77  F003         	call	_I2C_Stop	;wreg free
+   820  00024C  4A26               	infsnz	main@i,f,c
+   821  00024E  2A27               	incf	main@i+1,f,c
+   822  000250                     l1288:
+   823  000250  5027               	movf	main@i+1,w,c
+   824  000252  0A80               	xorlw	128
+   825  000254  6E1F               	movwf	??_main& (0+255),c
+   826  000256  503A               	movf	_v5,w,c
+   827  000258  5C26               	subwf	main@i,w,c
+   828  00025A  503B               	movf	_v5+1,w,c
+   829  00025C  0A80               	xorlw	128
+   830  00025E  581F               	subwfb	??_main& (0+255),w,c
+   831  000260  A0D8               	btfss	status,0,c
+   832  000262  D7DB               	goto	l1276
+   833                           
+   834                           ;newmain.c: 98: }
+   835                           ;newmain.c: 99: GIE = 1;
+   836  000264  8EF2               	bsf	intcon,7,c	;volatile
+   837                           
+   838                           ;newmain.c: 100: for (int q = rcv_buf[3]; q < v5; q++) {
+   839  000266  0100               	movlb	0	; () banked
+   840  000268  C063  F028         	movff	_rcv_buf+3,main@q
+   841  00026C  6A29               	clrf	main@q+1,c
+   842  00026E  D01A               	goto	l1294
+   843  000270                     l1290:
+   844                           
+   845                           ; BSR set to: 0
+   846                           ;newmain.c: 101: tx_buf[3 + q] = v7[q];
+   847  000270  0101               	movlb	1	; () banked
+   848  000272  0E00               	movlw	low _v7
+   849  000274  2428               	addwf	main@q,w,c
+   850  000276  6ED9               	movwf	fsr2l,c
+   851  000278  0101               	movlb	1	; () banked
+   852  00027A  0E01               	movlw	high _v7
+   853  00027C  2029               	addwfc	main@q+1,w,c
+   854  00027E  6EDA               	movwf	fsr2h,c
+   855  000280  0E03               	movlw	3
+   856  000282  2428               	addwf	main@q,w,c
+   857  000284  6E1F               	movwf	??_main& (0+255),c
+   858  000286  0E00               	movlw	0
+   859  000288  2029               	addwfc	main@q+1,w,c
+   860  00028A  6E20               	movwf	(??_main+1)& (0+255),c
+   861  00028C  0100               	movlb	0	; () banked
+   862  00028E  0E8D               	movlw	low _tx_buf
+   863  000290  241F               	addwf	??_main,w,c
+   864  000292  6EE1               	movwf	fsr1l,c
+   865  000294  0100               	movlb	0	; () banked
+   866  000296  0E00               	movlw	high _tx_buf
+   867  000298  2020               	addwfc	??_main+1,w,c
+   868  00029A  6EE2               	movwf	fsr1h,c
+   869  00029C  CFDF FFE7          	movff	indf2,indf1
+   870                           
+   871                           ; BSR set to: 0
+   872  0002A0  4A28               	infsnz	main@q,f,c
+   873  0002A2  2A29               	incf	main@q+1,f,c
+   874  0002A4                     l1294:
+   875                           
+   876                           ; BSR set to: 0
+   877  0002A4  5029               	movf	main@q+1,w,c
+   878  0002A6  0A80               	xorlw	128
+   879  0002A8  6E1F               	movwf	??_main& (0+255),c
+   880  0002AA  503A               	movf	_v5,w,c
+   881  0002AC  5C28               	subwf	main@q,w,c
+   882  0002AE  503B               	movf	_v5+1,w,c
+   883  0002B0  0A80               	xorlw	128
+   884  0002B2  581F               	subwfb	??_main& (0+255),w,c
+   885  0002B4  A0D8               	btfss	status,0,c
+   886  0002B6  D7DC               	goto	l1290
+   887                           
+   888                           ; BSR set to: 0
+   889                           ;newmain.c: 102: }
+   890                           ;newmain.c: 103: x = CRC16(tx_buf, v5 + 3);
+   891                           
+   892                           ; BSR set to: 0
+   893  0002B8  0100               	movlb	0	; () banked
+   894  0002BA  0E00               	movlw	high _tx_buf
+   895  0002BC  6E12               	movwf	CRC16@nData+1,c
+   896  0002BE  0100               	movlb	0	; () banked
+   897  0002C0  0E8D               	movlw	low _tx_buf
+   898  0002C2  6E11               	movwf	CRC16@nData,c
+   899  0002C4  0E03               	movlw	3
+   900  0002C6  243A               	addwf	_v5,w,c
+   901  0002C8  6E13               	movwf	CRC16@wLength,c
+   902  0002CA  0E00               	movlw	0
+   903  0002CC  203B               	addwfc	_v5+1,w,c
+   904  0002CE  6E14               	movwf	CRC16@wLength+1,c
+   905  0002D0  ECE9  F002         	call	_CRC16	;wreg free
+   906  0002D4  C011  F03E         	movff	?_CRC16,_x
+   907  0002D8  C012  F03F         	movff	?_CRC16+1,_x+1
+   908                           
+   909                           ;newmain.c: 104: tx_buf[v5 + 3] = x & (0x00FF);
+   910  0002DC  0E03               	movlw	3
+   911  0002DE  243A               	addwf	_v5,w,c
+   912  0002E0  6E1F               	movwf	??_main& (0+255),c
+   913  0002E2  0E00               	movlw	0
+   914  0002E4  203B               	addwfc	_v5+1,w,c
+   915  0002E6  6E20               	movwf	(??_main+1)& (0+255),c
+   916  0002E8  0100               	movlb	0	; () banked
+   917  0002EA  0E8D               	movlw	low _tx_buf
+   918  0002EC  241F               	addwf	??_main,w,c
+   919  0002EE  6ED9               	movwf	fsr2l,c
+   920  0002F0  0100               	movlb	0	; () banked
+   921  0002F2  0E00               	movlw	high _tx_buf
+   922  0002F4  2020               	addwfc	??_main+1,w,c
+   923  0002F6  6EDA               	movwf	fsr2h,c
+   924  0002F8  C03E  FFDF         	movff	_x,indf2
+   925                           
+   926                           ; BSR set to: 0
+   927                           ;newmain.c: 105: tx_buf[v5 + 4] = (0xFF00 & x) >> 8;
+   928  0002FC  0E04               	movlw	4
+   929  0002FE  243A               	addwf	_v5,w,c
+   930  000300  6E1F               	movwf	??_main& (0+255),c
+   931  000302  0E00               	movlw	0
+   932  000304  203B               	addwfc	_v5+1,w,c
+   933  000306  6E20               	movwf	(??_main+1)& (0+255),c
+   934  000308  0100               	movlb	0	; () banked
+   935  00030A  0E8D               	movlw	low _tx_buf
+   936  00030C  241F               	addwf	??_main,w,c
+   937  00030E  6ED9               	movwf	fsr2l,c
+   938  000310  0100               	movlb	0	; () banked
+   939  000312  0E00               	movlw	high _tx_buf
+   940  000314  2020               	addwfc	??_main+1,w,c
+   941  000316  6EDA               	movwf	fsr2h,c
+   942  000318  C03F  F021         	movff	_x+1,??_main+2
+   943  00031C  C021  F022         	movff	??_main+2,??_main+3
+   944  000320  6A23               	clrf	(??_main+4)& (0+255),c
+   945  000322  5022               	movf	??_main+3,w,c
+   946  000324  6EDF               	movwf	indf2,c
+   947                           
+   948                           ; BSR set to: 0
+   949                           ;newmain.c: 106: tx_len = v5 + 5;
+   950  000326  0E05               	movlw	5
+   951  000328  243A               	addwf	_v5,w,c
+   952  00032A  6E32               	movwf	_tx_len,c
+   953  00032C  0E00               	movlw	0
+   954  00032E  203B               	addwfc	_v5+1,w,c
+   955  000330  6E33               	movwf	_tx_len+1,c
+   956  000332  D14A               	goto	l1432
+   957  000334                     l1304:
+   958                           
+   959                           ; BSR set to: 0
+   960  000334  0100               	movlb	0	; () banked
+   961  000336  5161               	movf	(_rcv_buf+1)& (0+255),w,b
+   962  000338  0A06               	xorlw	6
+   963  00033A  A4D8               	btfss	status,2,c
+   964  00033C  D07A               	goto	l1364
+   965                           
+   966                           ; BSR set to: 0
+   967                           ;newmain.c: 110: if (rcv_buf[2] == 0x00 & rcv_buf[3] > 0x40) {
+   968  00033E  0100               	movlb	0	; () banked
+   969  000340  6762               	tstfsz	(_rcv_buf+2)& (0+255),b
+   970  000342  D01C               	goto	l136
+   971                           
+   972                           ; BSR set to: 0
+   973  000344  0100               	movlb	0	; () banked
+   974  000346  EE20  F063         	lfsr	2,_rcv_buf+3
+   975  00034A  0E40               	movlw	64
+   976  00034C  64DF               	cpfsgt	indf2,c
+   977  00034E  D016               	goto	l136
+   978                           
+   979                           ; BSR set to: 0
+   980                           ;newmain.c: 111: tx_buf[0] = 0x07;
+   981  000350  0E07               	movlw	7
+   982  000352  0100               	movlb	0	; () banked
+   983  000354  6F8D               	movwf	_tx_buf& (0+255),b
+   984                           
+   985                           ;newmain.c: 112: tx_buf[1] = 0x81;
+   986  000356  0E81               	movlw	129
+   987  000358  0100               	movlb	0	; () banked
+   988  00035A  6F8E               	movwf	(_tx_buf+1)& (0+255),b
+   989                           
+   990                           ;newmain.c: 113: tx_buf[2] = 0x02;
+   991  00035C  0E02               	movlw	2
+   992  00035E  0100               	movlb	0	; () banked
+   993  000360  6F8F               	movwf	(_tx_buf+2)& (0+255),b
+   994                           
+   995                           ; BSR set to: 0
+   996                           ;newmain.c: 114: x = CRC16(tx_buf, 3);
+   997  000362  0100               	movlb	0	; () banked
+   998  000364  0E00               	movlw	high _tx_buf
+   999  000366  6E12               	movwf	CRC16@nData+1,c
+  1000  000368  0100               	movlb	0	; () banked
+  1001  00036A  0E8D               	movlw	low _tx_buf
+  1002  00036C  6E11               	movwf	CRC16@nData,c
+  1003  00036E  0E00               	movlw	0
+  1004  000370  6E14               	movwf	CRC16@wLength+1,c
+  1005  000372  0E03               	movlw	3
+  1006  000374  6E13               	movwf	CRC16@wLength,c
+  1007  000376  ECE9  F002         	call	_CRC16	;wreg free
+  1008  00037A  D114               	goto	L6
+  1009  00037C                     l136:
+  1010                           
+  1011                           ; BSR set to: 0
+  1012                           ;newmain.c: 120: tx_buf[0] = rcv_buf[0];
+  1013  00037C  C060  F08D         	movff	_rcv_buf,_tx_buf
+  1014                           
+  1015                           ;newmain.c: 121: tx_buf[1] = rcv_buf[1];
+  1016  000380  C061  F08E         	movff	_rcv_buf+1,_tx_buf+1
+  1017                           
+  1018                           ; BSR set to: 0
+  1019                           ;newmain.c: 122: v1 = rcv_buf[3]*2 + 1;
+  1020  000384  0100               	movlb	0	; () banked
+  1021  000386  5163               	movf	(_rcv_buf+3)& (0+255),w,b
+  1022  000388  0D02               	mullw	2
+  1023  00038A  28F3               	incf	prodl,w,c
+  1024  00038C  6E3C               	movwf	_v1,c
+  1025                           
+  1026                           ; BSR set to: 0
+  1027                           ;newmain.c: 123: GIE = 0;
+  1028  00038E  9EF2               	bcf	intcon,7,c	;volatile
+  1029                           
+  1030                           ; BSR set to: 0
+  1031                           ;newmain.c: 124: I2C_Init();
+  1032  000390  EC51  F003         	call	_I2C_Init	;wreg free
+  1033                           
+  1034                           ;newmain.c: 125: I2C_Start(0xA0);
+  1035  000394  0EA0               	movlw	160
+  1036  000396  EC61  F003         	call	_I2C_Start
+  1037                           
+  1038                           ;newmain.c: 126: I2C_Write(v1 - 1);
+  1039  00039A  043C               	decf	_v1,w,c
+  1040  00039C  EC6C  F003         	call	_I2C_Write
+  1041                           
+  1042                           ;newmain.c: 127: I2C_Write(rcv_buf[4]);
+  1043  0003A0  0100               	movlb	0	; () banked
+  1044  0003A2  5164               	movf	(_rcv_buf+4)& (0+255),w,b
+  1045  0003A4  EC6C  F003         	call	_I2C_Write
+  1046                           
+  1047                           ;newmain.c: 128: I2C_Stop();
+  1048  0003A8  EC77  F003         	call	_I2C_Stop	;wreg free
+  1049                           
+  1050                           ;newmain.c: 129: _delay((unsigned long)((90)*(8000000/4000.0)));
+  1051  0003AC  0EEA               	movlw	234
+  1052  0003AE  6E1F               	movwf	??_main& (0+255),c
+  1053  0003B0  0EC3               	movlw	195
+  1054  0003B2                     u777:
+  1055  0003B2  2EE8               	decfsz	wreg,f,c
+  1056  0003B4  D7FE               	goto	u777
+  1057  0003B6  2E1F               	decfsz	??_main& (0+255),f,c
+  1058  0003B8  D7FC               	goto	u777
+  1059  0003BA  F000               	nop	
+  1060                           
+  1061                           ;newmain.c: 130: _delay((unsigned long)((90)*(8000000/4000.0)));
+  1062  0003BC  0EEA               	movlw	234
+  1063  0003BE  6E1F               	movwf	??_main& (0+255),c
+  1064  0003C0  0EC3               	movlw	195
+  1065  0003C2                     u787:
+  1066  0003C2  2EE8               	decfsz	wreg,f,c
+  1067  0003C4  D7FE               	goto	u787
+  1068  0003C6  2E1F               	decfsz	??_main& (0+255),f,c
+  1069  0003C8  D7FC               	goto	u787
+  1070  0003CA  F000               	nop	
+  1071                           
+  1072                           ;newmain.c: 131: I2C_Start(0xA0);
+  1073  0003CC  0EA0               	movlw	160
+  1074  0003CE  EC61  F003         	call	_I2C_Start
+  1075                           
+  1076                           ;newmain.c: 132: I2C_Write(v1);
+  1077  0003D2  503C               	movf	_v1,w,c
+  1078  0003D4  EC6C  F003         	call	_I2C_Write
+  1079                           
+  1080                           ;newmain.c: 133: I2C_Write(rcv_buf[5]);
+  1081  0003D8  0100               	movlb	0	; () banked
+  1082  0003DA  5165               	movf	(_rcv_buf+5)& (0+255),w,b
+  1083  0003DC  EC6C  F003         	call	_I2C_Write
+  1084                           
+  1085                           ;newmain.c: 134: I2C_Stop();
+  1086  0003E0  EC77  F003         	call	_I2C_Stop	;wreg free
+  1087                           
+  1088                           ;newmain.c: 135: GIE = 1;
+  1089  0003E4  8EF2               	bsf	intcon,7,c	;volatile
+  1090                           
+  1091                           ;newmain.c: 136: tx_buf[2] = rcv_buf[2];
+  1092  0003E6  C062  F08F         	movff	_rcv_buf+2,_tx_buf+2
+  1093                           
+  1094                           ;newmain.c: 137: tx_buf[3] = rcv_buf[3];
+  1095  0003EA  C063  F090         	movff	_rcv_buf+3,_tx_buf+3
+  1096                           
+  1097                           ;newmain.c: 138: tx_buf[4] = rcv_buf[4];
+  1098  0003EE  C064  F091         	movff	_rcv_buf+4,_tx_buf+4
+  1099                           
+  1100                           ;newmain.c: 139: tx_buf[5] = rcv_buf[5];
+  1101  0003F2  C065  F092         	movff	_rcv_buf+5,_tx_buf+5
+  1102                           
+  1103                           ;newmain.c: 140: x = CRC16(tx_buf, 6);
+  1104  0003F6  0100               	movlb	0	; () banked
+  1105  0003F8  0E00               	movlw	high _tx_buf
+  1106  0003FA  6E12               	movwf	CRC16@nData+1,c
+  1107  0003FC  0100               	movlb	0	; () banked
+  1108  0003FE  0E8D               	movlw	low _tx_buf
+  1109  000400  6E11               	movwf	CRC16@nData,c
+  1110  000402  0E00               	movlw	0
+  1111  000404  6E14               	movwf	CRC16@wLength+1,c
+  1112  000406  0E06               	movlw	6
+  1113  000408  6E13               	movwf	CRC16@wLength,c
+  1114  00040A  ECE9  F002         	call	_CRC16	;wreg free
+  1115  00040E  C011  F03E         	movff	?_CRC16,_x
+  1116  000412  C012  F03F         	movff	?_CRC16+1,_x+1
+  1117                           
+  1118                           ;newmain.c: 141: tx_buf[6] = x;
+  1119  000416  C03E  F093         	movff	_x,_tx_buf+6
+  1120                           
+  1121                           ;newmain.c: 142: tx_buf[7] = (0xFF00 & x) >> 8;
+  1122  00041A  C03F  F01F         	movff	_x+1,??_main
+  1123  00041E  C01F  F020         	movff	??_main,??_main+1
+  1124  000422  6A21               	clrf	(??_main+2)& (0+255),c
+  1125  000424  5020               	movf	??_main+1,w,c
+  1126  000426  0100               	movlb	0	; () banked
+  1127  000428  6F94               	movwf	(_tx_buf+7)& (0+255),b
+  1128  00042A                     
+  1129                           ; BSR set to: 0
+  1130                           ;newmain.c: 143: tx_len = 8;
+  1131  00042A  0E00               	movlw	0
+  1132  00042C  6E33               	movwf	_tx_len+1,c
+  1133  00042E  0E08               	movlw	8
+  1134  000430  D0CA               	goto	L5
+  1135  000432                     l1364:
+  1136                           
+  1137                           ; BSR set to: 0
+  1138  000432  0100               	movlb	0	; () banked
+  1139  000434  5161               	movf	(_rcv_buf+1)& (0+255),w,b
+  1140  000436  0A10               	xorlw	16
+  1141  000438  A4D8               	btfss	status,2,c
+  1142  00043A  D09F               	goto	l1422
+  1143                           
+  1144                           ; BSR set to: 0
+  1145                           ;newmain.c: 146: if ((rcv_buf[2] == 0x00 & rcv_buf[3] > 0x40) || (rcv_buf[5] > 0x40)) {
+  1146  00043C  0100               	movlb	0	; () banked
+  1147  00043E  6762               	tstfsz	(_rcv_buf+2)& (0+255),b
+  1148  000440  D005               	goto	l1370
+  1149                           
+  1150                           ; BSR set to: 0
+  1151  000442  0E41               	movlw	65
+  1152  000444  0100               	movlb	0	; () banked
+  1153  000446  5D63               	subwf	(_rcv_buf+3)& (0+255),w,b
+  1154  000448  B0D8               	btfsc	status,0,c
+  1155  00044A  D006               	goto	l1372
+  1156  00044C                     l1370:
+  1157                           
+  1158                           ; BSR set to: 0
+  1159  00044C  0100               	movlb	0	; () banked
+  1160  00044E  EE20  F065         	lfsr	2,_rcv_buf+5
+  1161  000452  0E40               	movlw	64
+  1162  000454  64DF               	cpfsgt	indf2,c
+  1163  000456  D016               	goto	l140
+  1164  000458                     l1372:
+  1165                           
+  1166                           ; BSR set to: 0
+  1167                           ;newmain.c: 147: tx_buf[0] = 0x07;
+  1168  000458  0E07               	movlw	7
+  1169  00045A  0100               	movlb	0	; () banked
+  1170  00045C  6F8D               	movwf	_tx_buf& (0+255),b
+  1171                           
+  1172                           ;newmain.c: 148: tx_buf[1] = 0x81;
+  1173  00045E  0E81               	movlw	129
+  1174  000460  0100               	movlb	0	; () banked
+  1175  000462  6F8E               	movwf	(_tx_buf+1)& (0+255),b
+  1176                           
+  1177                           ;newmain.c: 149: tx_buf[2] = 0x02;
+  1178  000464  0E02               	movlw	2
+  1179  000466  0100               	movlb	0	; () banked
+  1180  000468  6F8F               	movwf	(_tx_buf+2)& (0+255),b
+  1181                           
+  1182                           ; BSR set to: 0
+  1183                           ;newmain.c: 150: x = CRC16(tx_buf, 3);
+  1184  00046A  0100               	movlb	0	; () banked
+  1185  00046C  0E00               	movlw	high _tx_buf
+  1186  00046E  6E12               	movwf	CRC16@nData+1,c
+  1187  000470  0100               	movlb	0	; () banked
+  1188  000472  0E8D               	movlw	low _tx_buf
+  1189  000474  6E11               	movwf	CRC16@nData,c
+  1190  000476  0E00               	movlw	0
+  1191  000478  6E14               	movwf	CRC16@wLength+1,c
+  1192  00047A  0E03               	movlw	3
+  1193  00047C  6E13               	movwf	CRC16@wLength,c
+  1194  00047E  ECE9  F002         	call	_CRC16	;wreg free
+  1195  000482  D090               	goto	L6
+  1196  000484                     l140:
+  1197                           
+  1198                           ; BSR set to: 0
+  1199                           ;newmain.c: 155: tx_buf[0] = rcv_buf[0];
+  1200  000484  C060  F08D         	movff	_rcv_buf,_tx_buf
+  1201                           
+  1202                           ;newmain.c: 156: tx_buf[1] = rcv_buf[1];
+  1203  000488  C061  F08E         	movff	_rcv_buf+1,_tx_buf+1
+  1204                           
+  1205                           ;newmain.c: 157: tx_buf[2] = rcv_buf[2];
+  1206  00048C  C062  F08F         	movff	_rcv_buf+2,_tx_buf+2
+  1207                           
+  1208                           ;newmain.c: 158: tx_buf[3] = rcv_buf[3];
+  1209  000490  C063  F090         	movff	_rcv_buf+3,_tx_buf+3
+  1210                           
+  1211                           ;newmain.c: 159: tx_buf[4] = rcv_buf[4];
+  1212  000494  C064  F091         	movff	_rcv_buf+4,_tx_buf+4
+  1213                           
+  1214                           ;newmain.c: 160: tx_buf[5] = rcv_buf[5];
+  1215  000498  C065  F092         	movff	_rcv_buf+5,_tx_buf+5
+  1216                           
+  1217                           ; BSR set to: 0
+  1218                           ;newmain.c: 161: x = CRC16(tx_buf, 6);
+  1219  00049C  0100               	movlb	0	; () banked
+  1220  00049E  0E00               	movlw	high _tx_buf
+  1221  0004A0  6E12               	movwf	CRC16@nData+1,c
+  1222  0004A2  0100               	movlb	0	; () banked
+  1223  0004A4  0E8D               	movlw	low _tx_buf
+  1224  0004A6  6E11               	movwf	CRC16@nData,c
+  1225  0004A8  0E00               	movlw	0
+  1226  0004AA  6E14               	movwf	CRC16@wLength+1,c
+  1227  0004AC  0E06               	movlw	6
+  1228  0004AE  6E13               	movwf	CRC16@wLength,c
+  1229  0004B0  ECE9  F002         	call	_CRC16	;wreg free
+  1230  0004B4  C011  F03E         	movff	?_CRC16,_x
+  1231  0004B8  C012  F03F         	movff	?_CRC16+1,_x+1
+  1232                           
+  1233                           ;newmain.c: 162: tx_buf[6] = x;
+  1234  0004BC  C03E  F093         	movff	_x,_tx_buf+6
+  1235                           
+  1236                           ;newmain.c: 163: tx_buf[7] = (0xFF00 & x) >> 8;
+  1237  0004C0  C03F  F01F         	movff	_x+1,??_main
+  1238  0004C4  C01F  F020         	movff	??_main,??_main+1
+  1239  0004C8  6A21               	clrf	(??_main+2)& (0+255),c
+  1240  0004CA  5020               	movf	??_main+1,w,c
+  1241  0004CC  0100               	movlb	0	; () banked
+  1242  0004CE  6F94               	movwf	(_tx_buf+7)& (0+255),b
+  1243                           
+  1244                           ; BSR set to: 0
+  1245                           ;newmain.c: 164: GIE = 0;
+  1246  0004D0  9EF2               	bcf	intcon,7,c	;volatile
+  1247                           
+  1248                           ; BSR set to: 0
+  1249                           ;newmain.c: 165: I2C_Init();
+  1250  0004D2  EC51  F003         	call	_I2C_Init	;wreg free
+  1251                           
+  1252                           ;newmain.c: 166: for (int i = rcv_buf[3]; i < rcv_buf[5]; i++) {
+  1253  0004D6  0100               	movlb	0	; () banked
+  1254  0004D8  C063  F024         	movff	_rcv_buf+3,main@i_909
+  1255  0004DC  6A25               	clrf	main@i_909+1,c
+  1256  0004DE  D03D               	goto	l1418
+  1257  0004E0                     l1394:
+  1258                           
+  1259                           ; BSR set to: 0
+  1260                           ;newmain.c: 167: v1 = i * 2 + 1;
+  1261  0004E0  80D8               	bsf	status,0,c
+  1262  0004E2  3424               	rlcf	main@i_909,w,c
+  1263  0004E4  6E3C               	movwf	_v1,c
+  1264                           
+  1265                           ; BSR set to: 0
+  1266                           ;newmain.c: 168: I2C_Start(0xA0);
+  1267  0004E6  0EA0               	movlw	160
+  1268  0004E8  EC61  F003         	call	_I2C_Start
+  1269                           
+  1270                           ;newmain.c: 169: I2C_Write(v1 - 1);
+  1271  0004EC  043C               	decf	_v1,w,c
+  1272  0004EE  EC6C  F003         	call	_I2C_Write
+  1273                           
+  1274                           ;newmain.c: 170: I2C_Write(rcv_buf[7]);
+  1275  0004F2  0100               	movlb	0	; () banked
+  1276  0004F4  5167               	movf	(_rcv_buf+7)& (0+255),w,b
+  1277  0004F6  EC6C  F003         	call	_I2C_Write
+  1278                           
+  1279                           ;newmain.c: 171: I2C_Stop();
+  1280  0004FA  EC77  F003         	call	_I2C_Stop	;wreg free
+  1281                           
+  1282                           ;newmain.c: 172: _delay((unsigned long)((90)*(8000000/4000.0)));
+  1283  0004FE  0EEA               	movlw	234
+  1284  000500  6E1F               	movwf	??_main& (0+255),c
+  1285  000502  0EC3               	movlw	195
+  1286  000504                     u797:
+  1287  000504  2EE8               	decfsz	wreg,f,c
+  1288  000506  D7FE               	goto	u797
+  1289  000508  2E1F               	decfsz	??_main& (0+255),f,c
+  1290  00050A  D7FC               	goto	u797
+  1291  00050C  F000               	nop	
+  1292                           
+  1293                           ;newmain.c: 173: _delay((unsigned long)((90)*(8000000/4000.0)));
+  1294  00050E  0EEA               	movlw	234
+  1295  000510  6E1F               	movwf	??_main& (0+255),c
+  1296  000512  0EC3               	movlw	195
+  1297  000514                     u807:
+  1298  000514  2EE8               	decfsz	wreg,f,c
+  1299  000516  D7FE               	goto	u807
+  1300  000518  2E1F               	decfsz	??_main& (0+255),f,c
+  1301  00051A  D7FC               	goto	u807
+  1302  00051C  F000               	nop	
+  1303                           
+  1304                           ;newmain.c: 174: I2C_Start(0xA0);
+  1305  00051E  0EA0               	movlw	160
+  1306  000520  EC61  F003         	call	_I2C_Start
+  1307                           
+  1308                           ;newmain.c: 175: I2C_Write(v1);
+  1309  000524  503C               	movf	_v1,w,c
+  1310  000526  EC6C  F003         	call	_I2C_Write
+  1311                           
+  1312                           ;newmain.c: 176: I2C_Write(rcv_buf[8]);
+  1313  00052A  0100               	movlb	0	; () banked
+  1314  00052C  5168               	movf	(_rcv_buf+8)& (0+255),w,b
+  1315  00052E  EC6C  F003         	call	_I2C_Write
+  1316                           
+  1317                           ;newmain.c: 177: I2C_Stop();
+  1318  000532  EC77  F003         	call	_I2C_Stop	;wreg free
+  1319                           
+  1320                           ;newmain.c: 178: _delay((unsigned long)((90)*(8000000/4000.0)));
+  1321  000536  0EEA               	movlw	234
+  1322  000538  6E1F               	movwf	??_main& (0+255),c
+  1323  00053A  0EC3               	movlw	195
+  1324  00053C                     u817:
+  1325  00053C  2EE8               	decfsz	wreg,f,c
+  1326  00053E  D7FE               	goto	u817
+  1327  000540  2E1F               	decfsz	??_main& (0+255),f,c
+  1328  000542  D7FC               	goto	u817
+  1329  000544  F000               	nop	
+  1330                           
+  1331                           ;newmain.c: 179: _delay((unsigned long)((90)*(8000000/4000.0)));
+  1332  000546  0EEA               	movlw	234
+  1333  000548  6E1F               	movwf	??_main& (0+255),c
+  1334  00054A  0EC3               	movlw	195
+  1335  00054C                     u827:
+  1336  00054C  2EE8               	decfsz	wreg,f,c
+  1337  00054E  D7FE               	goto	u827
+  1338  000550  2E1F               	decfsz	??_main& (0+255),f,c
+  1339  000552  D7FC               	goto	u827
+  1340  000554  F000               	nop	
+  1341  000556  4A24               	infsnz	main@i_909,f,c
+  1342  000558  2A25               	incf	main@i_909+1,f,c
+  1343  00055A                     l1418:
+  1344  00055A  0100               	movlb	0	; () banked
+  1345  00055C  5165               	movf	(_rcv_buf+5)& (0+255),w,b
+  1346  00055E  6E1F               	movwf	??_main& (0+255),c
+  1347  000560  6A20               	clrf	(??_main+1)& (0+255),c
+  1348  000562  5025               	movf	main@i_909+1,w,c
+  1349  000564  0A80               	xorlw	128
+  1350  000566  6E21               	movwf	(??_main+2)& (0+255),c
+  1351  000568  501F               	movf	??_main,w,c
+  1352  00056A  5C24               	subwf	main@i_909,w,c
+  1353  00056C  5020               	movf	??_main+1,w,c
+  1354  00056E  0A80               	xorlw	128
+  1355  000570  5821               	subwfb	(??_main+2)& (0+255),w,c
+  1356  000572  A0D8               	btfss	status,0,c
+  1357  000574  D7B5               	goto	l1394
+  1358                           
+  1359                           ; BSR set to: 0
+  1360                           ;newmain.c: 180: }
+  1361                           ;newmain.c: 181: GIE = 1;
+  1362  000576  8EF2               	bsf	intcon,7,c	;volatile
+  1363  000578  D758               	goto	L7
+  1364  00057A                     l1422:
+  1365                           
+  1366                           ; BSR set to: 0
+  1367                           ;newmain.c: 185: tx_buf[0] = 0x07;
+  1368  00057A  0E07               	movlw	7
+  1369  00057C  0100               	movlb	0	; () banked
+  1370  00057E  6F8D               	movwf	_tx_buf& (0+255),b
+  1371                           
+  1372                           ;newmain.c: 186: tx_buf[1] = 0x81;
+  1373  000580  0E81               	movlw	129
+  1374  000582  0100               	movlb	0	; () banked
+  1375  000584  6F8E               	movwf	(_tx_buf+1)& (0+255),b
+  1376                           
+  1377                           ;newmain.c: 187: tx_buf[2] = 0x01;
+  1378  000586  0E01               	movlw	1
+  1379  000588  0100               	movlb	0	; () banked
+  1380  00058A  6F8F               	movwf	(_tx_buf+2)& (0+255),b
+  1381                           
+  1382                           ; BSR set to: 0
+  1383                           ;newmain.c: 188: x = CRC16(tx_buf, 3);
+  1384  00058C  0100               	movlb	0	; () banked
+  1385  00058E  0E00               	movlw	high _tx_buf
+  1386  000590  6E12               	movwf	CRC16@nData+1,c
+  1387  000592  0100               	movlb	0	; () banked
+  1388  000594  0E8D               	movlw	low _tx_buf
+  1389  000596  6E11               	movwf	CRC16@nData,c
+  1390  000598  0E00               	movlw	0
+  1391  00059A  6E14               	movwf	CRC16@wLength+1,c
+  1392  00059C  0E03               	movlw	3
+  1393  00059E  6E13               	movwf	CRC16@wLength,c
+  1394  0005A0  ECE9  F002         	call	_CRC16	;wreg free
+  1395  0005A4                     L6:
+  1396  0005A4  C011  F03E         	movff	?_CRC16,_x
+  1397  0005A8  C012  F03F         	movff	?_CRC16+1,_x+1
+  1398                           
+  1399                           ;newmain.c: 189: tx_buf[3] = x;
+  1400  0005AC  C03E  F090         	movff	_x,_tx_buf+3
+  1401                           
+  1402                           ;newmain.c: 190: tx_buf[4] = (0xFF00 & x) >> 8;
+  1403  0005B0  C03F  F01F         	movff	_x+1,??_main
+  1404  0005B4  C01F  F020         	movff	??_main,??_main+1
+  1405  0005B8  6A21               	clrf	(??_main+2)& (0+255),c
+  1406  0005BA  5020               	movf	??_main+1,w,c
+  1407  0005BC  0100               	movlb	0	; () banked
+  1408  0005BE  6F91               	movwf	(_tx_buf+4)& (0+255),b
+  1409                           
+  1410                           ; BSR set to: 0
+  1411                           ;newmain.c: 191: tx_len = 5;
+  1412  0005C0  0E00               	movlw	0
+  1413  0005C2  6E33               	movwf	_tx_len+1,c
+  1414  0005C4  0E05               	movlw	5
+  1415  0005C6                     L5:
+  1416  0005C6  6E32               	movwf	_tx_len,c
+  1417  0005C8                     l1432:
+  1418                           
+  1419                           ; BSR set to: 0
+  1420                           ;newmain.c: 192: }
+  1421                           ;newmain.c: 195: tx_flag = 1;
+  1422  0005C8  0100               	movlb	(_tx_flag/(0+8)) shr (0+8)
+  1423  0005CA  8240               	bsf	_tx_flag/(0+8),_tx_flag& (0+7),c
+  1424                           
+  1425                           ;newmain.c: 196: rcv_flag = 0;
+  1426  0005CC  0100               	movlb	(_rcv_flag/(0+8)) shr (0+8)
+  1427  0005CE  9040               	bcf	_rcv_flag/(0+8),_rcv_flag& (0+7),c
+  1428  0005D0  D5E3               	goto	l1246
+  1429  0005D2                     __end_of_main:
+  1430                           	opt stack 0
+  1431                           tblptru	equ	0xFF8
+  1432                           tblptrh	equ	0xFF7
+  1433                           tblptrl	equ	0xFF6
+  1434                           tablat	equ	0xFF5
+  1435                           prodh	equ	0xFF4
+  1436                           prodl	equ	0xFF3
+  1437                           intcon	equ	0xFF2
+  1438                           postinc0	equ	0xFEE
+  1439                           wreg	equ	0xFE8
+  1440                           indf1	equ	0xFE7
+  1441                           fsr1h	equ	0xFE2
+  1442                           fsr1l	equ	0xFE1
+  1443                           indf2	equ	0xFDF
+  1444                           fsr2h	equ	0xFDA
+  1445                           fsr2l	equ	0xFD9
+  1446                           status	equ	0xFD8
+  1447                           
+  1448 ;; *************** function _I2C_Stop *****************
+  1449 ;; Defined at:
+  1450 ;;		line 347 in file "newmain.c"
+  1451 ;; Parameters:    Size  Location     Type
+  1452 ;;		None
+  1453 ;; Auto vars:     Size  Location     Type
+  1454 ;;		None
+  1455 ;; Return value:  Size  Location     Type
+  1456 ;;                  1    wreg      unsigned char 
+  1457 ;; Registers used:
+  1458 ;;		wreg, cstack
+  1459 ;; Tracked objects:
+  1460 ;;		On entry : 0/0
+  1461 ;;		On exit  : 0/0
+  1462 ;;		Unchanged: 0/0
+  1463 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1464 ;;      Params:         0       0       0       0       0       0       0
+  1465 ;;      Locals:         0       0       0       0       0       0       0
+  1466 ;;      Temps:          0       0       0       0       0       0       0
+  1467 ;;      Totals:         0       0       0       0       0       0       0
+  1468 ;;Total ram usage:        0 bytes
+  1469 ;; Hardware stack levels used:    1
+  1470 ;; Hardware stack levels required when called:    2
+  1471 ;; This function calls:
+  1472 ;;		_I2C_Ready
+  1473 ;; This function is called by:
+  1474 ;;		_main
+  1475 ;; This function uses a non-reentrant model
+  1476 ;;
+  1477                           
+  1478                           	psect	text1
+  1479  0006EE                     __ptext1:
+  1480                           	opt stack 0
+  1481  0006EE                     _I2C_Stop:
+  1482                           	opt stack 28
+  1483                           
+  1484                           ;newmain.c: 348: I2C_Ready();
+  1485                           
+  1486                           ;incstack = 0
+  1487  0006EE  EC7F  F003         	call	_I2C_Ready	;wreg free
+  1488                           
+  1489                           ;newmain.c: 349: SSPCON2bits.PEN = 1;
+  1490  0006F2  84C5               	bsf	4037,2,c	;volatile
+  1491  0006F4                     l202:
+  1492  0006F4  B4C5               	btfsc	4037,2,c	;volatile
+  1493  0006F6  D7FE               	goto	l202
+  1494                           
+  1495                           ;newmain.c: 351: SSPIF = 0;
+  1496  0006F8  969E               	bcf	3998,3,c	;volatile
+  1497                           
+  1498                           ;newmain.c: 352: if (!SSPSTATbits.P)
+  1499  0006FA  50C7               	movf	4039,w,c	;volatile
+  1500  0006FC  0012               	return	
+  1501  0006FE                     __end_of_I2C_Stop:
+  1502                           	opt stack 0
+  1503                           tblptru	equ	0xFF8
+  1504                           tblptrh	equ	0xFF7
+  1505                           tblptrl	equ	0xFF6
+  1506                           tablat	equ	0xFF5
+  1507                           prodh	equ	0xFF4
+  1508                           prodl	equ	0xFF3
+  1509                           intcon	equ	0xFF2
+  1510                           postinc0	equ	0xFEE
+  1511                           wreg	equ	0xFE8
+  1512                           indf1	equ	0xFE7
+  1513                           fsr1h	equ	0xFE2
+  1514                           fsr1l	equ	0xFE1
+  1515                           indf2	equ	0xFDF
+  1516                           fsr2h	equ	0xFDA
+  1517                           fsr2l	equ	0xFD9
+  1518                           status	equ	0xFD8
+  1519                           
+  1520 ;; *************** function _I2C_Start *****************
+  1521 ;; Defined at:
+  1522 ;;		line 320 in file "newmain.c"
+  1523 ;; Parameters:    Size  Location     Type
+  1524 ;;  slave_write_    1    wreg     unsigned char 
+  1525 ;; Auto vars:     Size  Location     Type
+  1526 ;;  slave_write_    1   17[COMRAM] unsigned char 
+  1527 ;; Return value:  Size  Location     Type
+  1528 ;;                  1    wreg      unsigned char 
+  1529 ;; Registers used:
+  1530 ;;		wreg, status,2, cstack
+  1531 ;; Tracked objects:
+  1532 ;;		On entry : 0/0
+  1533 ;;		On exit  : 0/0
+  1534 ;;		Unchanged: 0/0
+  1535 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1536 ;;      Params:         0       0       0       0       0       0       0
+  1537 ;;      Locals:         1       0       0       0       0       0       0
+  1538 ;;      Temps:          0       0       0       0       0       0       0
+  1539 ;;      Totals:         1       0       0       0       0       0       0
+  1540 ;;Total ram usage:        1 bytes
+  1541 ;; Hardware stack levels used:    1
+  1542 ;; Hardware stack levels required when called:    3
+  1543 ;; This function calls:
+  1544 ;;		_I2C_Write
+  1545 ;; This function is called by:
+  1546 ;;		_main
+  1547 ;; This function uses a non-reentrant model
+  1548 ;;
+  1549                           
+  1550                           	psect	text2
+  1551  0006C2                     __ptext2:
+  1552                           	opt stack 0
+  1553  0006C2                     _I2C_Start:
+  1554                           	opt stack 27
+  1555                           
+  1556                           ;incstack = 0
+  1557                           ;I2C_Start@slave_write_address stored from wreg
+  1558  0006C2  6E12               	movwf	I2C_Start@slave_write_address,c
+  1559                           
+  1560                           ;newmain.c: 321: SSPCON2bits.SEN = 1;
+  1561  0006C4  80C5               	bsf	4037,0,c	;volatile
+  1562  0006C6                     l181:
+  1563  0006C6  B0C5               	btfsc	4037,0,c	;volatile
+  1564  0006C8  D7FE               	goto	l181
+  1565                           
+  1566                           ;newmain.c: 323: SSPIF = 0;
+  1567  0006CA  969E               	bcf	3998,3,c	;volatile
+  1568                           
+  1569                           ;newmain.c: 324: if (!SSPSTATbits.S)
+  1570  0006CC  A6C7               	btfss	4039,3,c	;volatile
+  1571  0006CE  0012               	return	
+  1572                           
+  1573                           ;newmain.c: 326: return (I2C_Write(slave_write_address));
+  1574                           ;	Return value of _I2C_Start is never used
+  1575                           
+  1576                           ;newmain.c: 325: return 0;
+  1577                           ;	Return value of _I2C_Start is never used
+  1578  0006D0  5012               	movf	I2C_Start@slave_write_address,w,c
+  1579  0006D2  EC6C  F003         	call	_I2C_Write
+  1580  0006D6  0012               	return	
+  1581  0006D8                     __end_of_I2C_Start:
+  1582                           	opt stack 0
+  1583                           tblptru	equ	0xFF8
+  1584                           tblptrh	equ	0xFF7
+  1585                           tblptrl	equ	0xFF6
+  1586                           tablat	equ	0xFF5
+  1587                           prodh	equ	0xFF4
+  1588                           prodl	equ	0xFF3
+  1589                           intcon	equ	0xFF2
+  1590                           postinc0	equ	0xFEE
+  1591                           wreg	equ	0xFE8
+  1592                           indf1	equ	0xFE7
+  1593                           fsr1h	equ	0xFE2
+  1594                           fsr1l	equ	0xFE1
+  1595                           indf2	equ	0xFDF
+  1596                           fsr2h	equ	0xFDA
+  1597                           fsr2l	equ	0xFD9
+  1598                           status	equ	0xFD8
+  1599                           
+  1600 ;; *************** function _I2C_Write *****************
+  1601 ;; Defined at:
+  1602 ;;		line 338 in file "newmain.c"
+  1603 ;; Parameters:    Size  Location     Type
+  1604 ;;  data            1    wreg     unsigned char 
+  1605 ;; Auto vars:     Size  Location     Type
+  1606 ;;  data            1   16[COMRAM] unsigned char 
+  1607 ;; Return value:  Size  Location     Type
+  1608 ;;                  1    wreg      unsigned char 
+  1609 ;; Registers used:
+  1610 ;;		wreg, cstack
+  1611 ;; Tracked objects:
+  1612 ;;		On entry : 0/0
+  1613 ;;		On exit  : 0/0
+  1614 ;;		Unchanged: 0/0
+  1615 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1616 ;;      Params:         0       0       0       0       0       0       0
+  1617 ;;      Locals:         1       0       0       0       0       0       0
+  1618 ;;      Temps:          0       0       0       0       0       0       0
+  1619 ;;      Totals:         1       0       0       0       0       0       0
+  1620 ;;Total ram usage:        1 bytes
+  1621 ;; Hardware stack levels used:    1
+  1622 ;; Hardware stack levels required when called:    2
+  1623 ;; This function calls:
+  1624 ;;		_I2C_Ready
+  1625 ;; This function is called by:
+  1626 ;;		_main
+  1627 ;;		_I2C_Start
+  1628 ;; This function uses a non-reentrant model
+  1629 ;;
+  1630                           
+  1631                           	psect	text3
+  1632  0006D8                     __ptext3:
+  1633                           	opt stack 0
+  1634  0006D8                     _I2C_Write:
+  1635                           	opt stack 28
+  1636                           
+  1637                           ;incstack = 0
+  1638                           ;I2C_Write@data stored from wreg
+  1639  0006D8  6E11               	movwf	I2C_Write@data,c
+  1640                           
+  1641                           ;newmain.c: 339: SSPBUF = data;
+  1642  0006DA  C011  FFC9         	movff	I2C_Write@data,4041	;volatile
+  1643                           
+  1644                           ;newmain.c: 340: I2C_Ready();
+  1645  0006DE  EC7F  F003         	call	_I2C_Ready	;wreg free
+  1646                           
+  1647                           ;newmain.c: 341: if (SSPCON2bits.ACKSTAT)
+  1648  0006E2  ACC5               	btfss	4037,6,c	;volatile
+  1649  0006E4  D002               	goto	l1164
+  1650                           
+  1651                           ;newmain.c: 342: return 1;
+  1652  0006E6  0E01               	movlw	1
+  1653  0006E8  0012               	return	
+  1654  0006EA                     l1164:
+  1655                           
+  1656                           ;newmain.c: 343: else
+  1657                           ;newmain.c: 344: return 2;
+  1658  0006EA  0E02               	movlw	2
+  1659  0006EC  0012               	return	
+  1660  0006EE                     __end_of_I2C_Write:
+  1661                           	opt stack 0
+  1662                           tblptru	equ	0xFF8
+  1663                           tblptrh	equ	0xFF7
+  1664                           tblptrl	equ	0xFF6
+  1665                           tablat	equ	0xFF5
+  1666                           prodh	equ	0xFF4
+  1667                           prodl	equ	0xFF3
+  1668                           intcon	equ	0xFF2
+  1669                           postinc0	equ	0xFEE
+  1670                           wreg	equ	0xFE8
+  1671                           indf1	equ	0xFE7
+  1672                           fsr1h	equ	0xFE2
+  1673                           fsr1l	equ	0xFE1
+  1674                           indf2	equ	0xFDF
+  1675                           fsr2h	equ	0xFDA
+  1676                           fsr2l	equ	0xFD9
+  1677                           status	equ	0xFD8
+  1678                           
+  1679 ;; *************** function _I2C_Read *****************
+  1680 ;; Defined at:
+  1681 ;;		line 357 in file "newmain.c"
+  1682 ;; Parameters:    Size  Location     Type
+  1683 ;;  flag            1    wreg     unsigned char 
+  1684 ;; Auto vars:     Size  Location     Type
+  1685 ;;  flag            1   16[COMRAM] unsigned char 
+  1686 ;;  buffer          2   17[COMRAM] int 
+  1687 ;; Return value:  Size  Location     Type
+  1688 ;;                  1    wreg      unsigned char 
+  1689 ;; Registers used:
+  1690 ;;		wreg, status,2, cstack
+  1691 ;; Tracked objects:
+  1692 ;;		On entry : 0/0
+  1693 ;;		On exit  : 0/0
+  1694 ;;		Unchanged: 0/0
+  1695 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1696 ;;      Params:         0       0       0       0       0       0       0
+  1697 ;;      Locals:         3       0       0       0       0       0       0
+  1698 ;;      Temps:          0       0       0       0       0       0       0
+  1699 ;;      Totals:         3       0       0       0       0       0       0
+  1700 ;;Total ram usage:        3 bytes
+  1701 ;; Hardware stack levels used:    1
+  1702 ;; Hardware stack levels required when called:    2
+  1703 ;; This function calls:
+  1704 ;;		_I2C_Ack
+  1705 ;;		_I2C_Nack
+  1706 ;;		_I2C_Ready
+  1707 ;; This function is called by:
+  1708 ;;		_main
+  1709 ;; This function uses a non-reentrant model
+  1710 ;;
+  1711                           
+  1712                           	psect	text4
+  1713  000676                     __ptext4:
+  1714                           	opt stack 0
+  1715  000676                     _I2C_Read:
+  1716                           	opt stack 28
+  1717                           
+  1718                           ;incstack = 0
+  1719                           ;I2C_Read@flag stored from wreg
+  1720  000676  6E11               	movwf	I2C_Read@flag,c
+  1721                           
+  1722                           ;newmain.c: 360: int buffer = 0;
+  1723  000678  0E00               	movlw	0
+  1724  00067A  6E13               	movwf	I2C_Read@buffer+1,c
+  1725  00067C  0E00               	movlw	0
+  1726  00067E  6E12               	movwf	I2C_Read@buffer,c
+  1727                           
+  1728                           ;newmain.c: 361: SSPCON2bits.RCEN = 1;
+  1729  000680  86C5               	bsf	4037,3,c	;volatile
+  1730  000682                     l209:
+  1731  000682  A0C7               	btfss	4039,0,c	;volatile
+  1732  000684  D7FE               	goto	l209
+  1733                           
+  1734                           ;newmain.c: 365: buffer = SSPBUF;
+  1735  000686  CFC9 F012          	movff	4041,I2C_Read@buffer	;volatile
+  1736  00068A  6A13               	clrf	I2C_Read@buffer+1,c
+  1737                           
+  1738                           ;newmain.c: 369: if (flag == 0)
+  1739  00068C  6611               	tstfsz	I2C_Read@flag,c
+  1740  00068E  D003               	goto	l1216
+  1741                           
+  1742                           ;newmain.c: 370: I2C_Ack();
+  1743  000690  EC8B  F003         	call	_I2C_Ack	;wreg free
+  1744  000694  D002               	goto	l213
+  1745  000696                     l1216:
+  1746                           
+  1747                           ;newmain.c: 371: else
+  1748                           ;newmain.c: 372: I2C_Nack();
+  1749  000696  EC86  F003         	call	_I2C_Nack	;wreg free
+  1750  00069A                     l213:
+  1751                           
+  1752                           ;newmain.c: 373: I2C_Ready();
+  1753  00069A  EC7F  F003         	call	_I2C_Ready	;wreg free
+  1754                           
+  1755                           ;newmain.c: 374: return (buffer);
+  1756  00069E  5012               	movf	I2C_Read@buffer,w,c
+  1757  0006A0  0012               	return	
+  1758  0006A2                     __end_of_I2C_Read:
+  1759                           	opt stack 0
+  1760                           tblptru	equ	0xFF8
+  1761                           tblptrh	equ	0xFF7
+  1762                           tblptrl	equ	0xFF6
+  1763                           tablat	equ	0xFF5
+  1764                           prodh	equ	0xFF4
+  1765                           prodl	equ	0xFF3
+  1766                           intcon	equ	0xFF2
+  1767                           postinc0	equ	0xFEE
+  1768                           wreg	equ	0xFE8
+  1769                           indf1	equ	0xFE7
+  1770                           fsr1h	equ	0xFE2
+  1771                           fsr1l	equ	0xFE1
+  1772                           indf2	equ	0xFDF
+  1773                           fsr2h	equ	0xFDA
+  1774                           fsr2l	equ	0xFD9
+  1775                           status	equ	0xFD8
+  1776                           
+  1777 ;; *************** function _I2C_Ready *****************
+  1778 ;; Defined at:
+  1779 ;;		line 330 in file "newmain.c"
+  1780 ;; Parameters:    Size  Location     Type
+  1781 ;;		None
+  1782 ;; Auto vars:     Size  Location     Type
+  1783 ;;		None
+  1784 ;; Return value:  Size  Location     Type
+  1785 ;;		None               void
+  1786 ;; Registers used:
+  1787 ;;		None
+  1788 ;; Tracked objects:
+  1789 ;;		On entry : 0/0
+  1790 ;;		On exit  : 0/0
+  1791 ;;		Unchanged: 0/0
+  1792 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1793 ;;      Params:         0       0       0       0       0       0       0
+  1794 ;;      Locals:         0       0       0       0       0       0       0
+  1795 ;;      Temps:          0       0       0       0       0       0       0
+  1796 ;;      Totals:         0       0       0       0       0       0       0
+  1797 ;;Total ram usage:        0 bytes
+  1798 ;; Hardware stack levels used:    1
+  1799 ;; Hardware stack levels required when called:    1
+  1800 ;; This function calls:
+  1801 ;;		Nothing
+  1802 ;; This function is called by:
+  1803 ;;		_I2C_Write
+  1804 ;;		_I2C_Stop
+  1805 ;;		_I2C_Read
+  1806 ;; This function uses a non-reentrant model
+  1807 ;;
+  1808                           
+  1809                           	psect	text5
+  1810  0006FE                     __ptext5:
+  1811                           	opt stack 0
+  1812  0006FE                     _I2C_Ready:
+  1813                           	opt stack 28
+  1814  0006FE                     l188:
+  1815  0006FE  B6A1               	btfsc	4001,3,c	;volatile
+  1816  000700  D7FE               	goto	l188
+  1817  000702                     l191:
+  1818  000702  A0C7               	btfss	4039,0,c	;volatile
+  1819  000704  B4C7               	btfsc	4039,2,c	;volatile
+  1820  000706  D7FD               	goto	l191
+  1821                           
+  1822                           ;newmain.c: 335: SSPIF = 0;
+  1823  000708  969E               	bcf	3998,3,c	;volatile
+  1824  00070A  0012               	return	
+  1825  00070C                     __end_of_I2C_Ready:
+  1826                           	opt stack 0
+  1827                           tblptru	equ	0xFF8
+  1828                           tblptrh	equ	0xFF7
+  1829                           tblptrl	equ	0xFF6
+  1830                           tablat	equ	0xFF5
+  1831                           prodh	equ	0xFF4
+  1832                           prodl	equ	0xFF3
+  1833                           intcon	equ	0xFF2
+  1834                           postinc0	equ	0xFEE
+  1835                           wreg	equ	0xFE8
+  1836                           indf1	equ	0xFE7
+  1837                           fsr1h	equ	0xFE2
+  1838                           fsr1l	equ	0xFE1
+  1839                           indf2	equ	0xFDF
+  1840                           fsr2h	equ	0xFDA
+  1841                           fsr2l	equ	0xFD9
+  1842                           status	equ	0xFD8
+  1843                           
+  1844 ;; *************** function _I2C_Nack *****************
+  1845 ;; Defined at:
+  1846 ;;		line 383 in file "newmain.c"
+  1847 ;; Parameters:    Size  Location     Type
+  1848 ;;		None
+  1849 ;; Auto vars:     Size  Location     Type
+  1850 ;;		None
+  1851 ;; Return value:  Size  Location     Type
+  1852 ;;		None               void
+  1853 ;; Registers used:
+  1854 ;;		None
+  1855 ;; Tracked objects:
+  1856 ;;		On entry : 0/0
+  1857 ;;		On exit  : 0/0
+  1858 ;;		Unchanged: 0/0
+  1859 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1860 ;;      Params:         0       0       0       0       0       0       0
+  1861 ;;      Locals:         0       0       0       0       0       0       0
+  1862 ;;      Temps:          0       0       0       0       0       0       0
+  1863 ;;      Totals:         0       0       0       0       0       0       0
+  1864 ;;Total ram usage:        0 bytes
+  1865 ;; Hardware stack levels used:    1
+  1866 ;; Hardware stack levels required when called:    1
+  1867 ;; This function calls:
+  1868 ;;		Nothing
+  1869 ;; This function is called by:
+  1870 ;;		_I2C_Read
+  1871 ;; This function uses a non-reentrant model
+  1872 ;;
+  1873                           
+  1874                           	psect	text6
+  1875  00070C                     __ptext6:
+  1876                           	opt stack 0
+  1877  00070C                     _I2C_Nack:
+  1878                           	opt stack 28
+  1879                           
+  1880                           ;newmain.c: 384: SSPCON2bits.ACKDT = 1;
+  1881                           
+  1882                           ;incstack = 0
+  1883  00070C  8AC5               	bsf	4037,5,c	;volatile
+  1884                           
+  1885                           ;newmain.c: 385: SSPCON2bits.ACKEN = 1;
+  1886  00070E  88C5               	bsf	4037,4,c	;volatile
+  1887  000710                     l223:
+  1888  000710  A8C5               	btfss	4037,4,c	;volatile
+  1889  000712  0012               	return	
+  1890  000714  D7FD               	goto	l223
+  1891  000716                     __end_of_I2C_Nack:
+  1892                           	opt stack 0
+  1893                           tblptru	equ	0xFF8
+  1894                           tblptrh	equ	0xFF7
+  1895                           tblptrl	equ	0xFF6
+  1896                           tablat	equ	0xFF5
+  1897                           prodh	equ	0xFF4
+  1898                           prodl	equ	0xFF3
+  1899                           intcon	equ	0xFF2
+  1900                           postinc0	equ	0xFEE
+  1901                           wreg	equ	0xFE8
+  1902                           indf1	equ	0xFE7
+  1903                           fsr1h	equ	0xFE2
+  1904                           fsr1l	equ	0xFE1
+  1905                           indf2	equ	0xFDF
+  1906                           fsr2h	equ	0xFDA
+  1907                           fsr2l	equ	0xFD9
+  1908                           status	equ	0xFD8
+  1909                           
+  1910 ;; *************** function _I2C_Ack *****************
+  1911 ;; Defined at:
+  1912 ;;		line 377 in file "newmain.c"
+  1913 ;; Parameters:    Size  Location     Type
+  1914 ;;		None
+  1915 ;; Auto vars:     Size  Location     Type
+  1916 ;;		None
+  1917 ;; Return value:  Size  Location     Type
+  1918 ;;		None               void
+  1919 ;; Registers used:
+  1920 ;;		None
+  1921 ;; Tracked objects:
+  1922 ;;		On entry : 0/0
+  1923 ;;		On exit  : 0/0
+  1924 ;;		Unchanged: 0/0
+  1925 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1926 ;;      Params:         0       0       0       0       0       0       0
+  1927 ;;      Locals:         0       0       0       0       0       0       0
+  1928 ;;      Temps:          0       0       0       0       0       0       0
+  1929 ;;      Totals:         0       0       0       0       0       0       0
+  1930 ;;Total ram usage:        0 bytes
+  1931 ;; Hardware stack levels used:    1
+  1932 ;; Hardware stack levels required when called:    1
+  1933 ;; This function calls:
+  1934 ;;		Nothing
+  1935 ;; This function is called by:
+  1936 ;;		_I2C_Read
+  1937 ;; This function uses a non-reentrant model
+  1938 ;;
+  1939                           
+  1940                           	psect	text7
+  1941  000716                     __ptext7:
+  1942                           	opt stack 0
+  1943  000716                     _I2C_Ack:
+  1944                           	opt stack 28
+  1945                           
+  1946                           ;newmain.c: 378: SSPCON2bits.ACKDT = 0;
+  1947                           
+  1948                           ;incstack = 0
+  1949  000716  9AC5               	bcf	4037,5,c	;volatile
+  1950                           
+  1951                           ;newmain.c: 379: SSPCON2bits.ACKEN = 1;
+  1952  000718  88C5               	bsf	4037,4,c	;volatile
+  1953  00071A                     l217:
+  1954  00071A  A8C5               	btfss	4037,4,c	;volatile
+  1955  00071C  0012               	return	
+  1956  00071E  D7FD               	goto	l217
+  1957  000720                     __end_of_I2C_Ack:
+  1958                           	opt stack 0
+  1959                           tblptru	equ	0xFF8
+  1960                           tblptrh	equ	0xFF7
+  1961                           tblptrl	equ	0xFF6
+  1962                           tablat	equ	0xFF5
+  1963                           prodh	equ	0xFF4
+  1964                           prodl	equ	0xFF3
+  1965                           intcon	equ	0xFF2
+  1966                           postinc0	equ	0xFEE
+  1967                           wreg	equ	0xFE8
+  1968                           indf1	equ	0xFE7
+  1969                           fsr1h	equ	0xFE2
+  1970                           fsr1l	equ	0xFE1
+  1971                           indf2	equ	0xFDF
+  1972                           fsr2h	equ	0xFDA
+  1973                           fsr2l	equ	0xFD9
+  1974                           status	equ	0xFD8
+  1975                           
+  1976 ;; *************** function _I2C_Init *****************
+  1977 ;; Defined at:
+  1978 ;;		line 306 in file "newmain.c"
+  1979 ;; Parameters:    Size  Location     Type
+  1980 ;;		None
+  1981 ;; Auto vars:     Size  Location     Type
+  1982 ;;		None
+  1983 ;; Return value:  Size  Location     Type
+  1984 ;;		None               void
+  1985 ;; Registers used:
+  1986 ;;		wreg, status,2
+  1987 ;; Tracked objects:
+  1988 ;;		On entry : 0/0
+  1989 ;;		On exit  : 0/0
+  1990 ;;		Unchanged: 0/0
+  1991 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1992 ;;      Params:         0       0       0       0       0       0       0
+  1993 ;;      Locals:         0       0       0       0       0       0       0
+  1994 ;;      Temps:          0       0       0       0       0       0       0
+  1995 ;;      Totals:         0       0       0       0       0       0       0
+  1996 ;;Total ram usage:        0 bytes
+  1997 ;; Hardware stack levels used:    1
+  1998 ;; Hardware stack levels required when called:    1
+  1999 ;; This function calls:
+  2000 ;;		Nothing
+  2001 ;; This function is called by:
+  2002 ;;		_main
+  2003 ;; This function uses a non-reentrant model
+  2004 ;;
+  2005                           
+  2006                           	psect	text8
+  2007  0006A2                     __ptext8:
+  2008                           	opt stack 0
+  2009  0006A2                     _I2C_Init:
+  2010                           	opt stack 29
+  2011                           
+  2012                           ;newmain.c: 307: ANSELC = 0;
+  2013                           
+  2014                           ;incstack = 0
+  2015  0006A2  0E00               	movlw	0
+  2016  0006A4  010F               	movlb	15	; () banked
+  2017  0006A6  6F3A               	movwf	58,b	;volatile
+  2018                           
+  2019                           ; BSR set to: 15
+  2020                           ;newmain.c: 308: TRISC3 = 1;
+  2021  0006A8  8694               	bsf	3988,3,c	;volatile
+  2022                           
+  2023                           ; BSR set to: 15
+  2024                           ;newmain.c: 309: TRISC4 = 1;
+  2025  0006AA  8894               	bsf	3988,4,c	;volatile
+  2026                           
+  2027                           ;newmain.c: 311: SSPSTAT = 0x80;
+  2028  0006AC  0E80               	movlw	128
+  2029  0006AE  6EC7               	movwf	4039,c	;volatile
+  2030                           
+  2031                           ;newmain.c: 312: SSPCON1 = 0x28;
+  2032  0006B0  0E28               	movlw	40
+  2033  0006B2  6EC6               	movwf	4038,c	;volatile
+  2034                           
+  2035                           ;newmain.c: 314: SSPCON2 = 0;
+  2036  0006B4  0E00               	movlw	0
+  2037  0006B6  6EC5               	movwf	4037,c	;volatile
+  2038                           
+  2039                           ;newmain.c: 315: SSPADD = 19;
+  2040  0006B8  0E13               	movlw	19
+  2041  0006BA  6EC8               	movwf	4040,c	;volatile
+  2042                           
+  2043                           ; BSR set to: 15
+  2044                           ;newmain.c: 316: SSPIE = 1;
+  2045  0006BC  869D               	bsf	3997,3,c	;volatile
+  2046                           
+  2047                           ; BSR set to: 15
+  2048                           ;newmain.c: 317: SSPIF = 0;
+  2049  0006BE  969E               	bcf	3998,3,c	;volatile
+  2050                           
+  2051                           ; BSR set to: 15
+  2052  0006C0  0012               	return	
+  2053  0006C2                     __end_of_I2C_Init:
+  2054                           	opt stack 0
+  2055                           tblptru	equ	0xFF8
+  2056                           tblptrh	equ	0xFF7
+  2057                           tblptrl	equ	0xFF6
+  2058                           tablat	equ	0xFF5
+  2059                           prodh	equ	0xFF4
+  2060                           prodl	equ	0xFF3
+  2061                           intcon	equ	0xFF2
+  2062                           postinc0	equ	0xFEE
+  2063                           wreg	equ	0xFE8
+  2064                           indf1	equ	0xFE7
+  2065                           fsr1h	equ	0xFE2
+  2066                           fsr1l	equ	0xFE1
+  2067                           indf2	equ	0xFDF
+  2068                           fsr2h	equ	0xFDA
+  2069                           fsr2l	equ	0xFD9
+  2070                           status	equ	0xFD8
+  2071                           
+  2072 ;; *************** function _CRC16 *****************
+  2073 ;; Defined at:
+  2074 ;;		line 258 in file "newmain.c"
+  2075 ;; Parameters:    Size  Location     Type
+  2076 ;;  nData           2   16[COMRAM] PTR const unsigned char 
+  2077 ;;		 -> tx_buf(70), 
+  2078 ;;  wLength         2   18[COMRAM] unsigned int 
+  2079 ;; Auto vars:     Size  Location     Type
+  2080 ;;  wCRCWord        2   23[COMRAM] unsigned int 
+  2081 ;;  nTemp           1   22[COMRAM] unsigned char 
+  2082 ;; Return value:  Size  Location     Type
+  2083 ;;                  2   16[COMRAM] unsigned int 
+  2084 ;; Registers used:
+  2085 ;;		wreg, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh
+  2086 ;; Tracked objects:
+  2087 ;;		On entry : 0/0
+  2088 ;;		On exit  : 0/0
+  2089 ;;		Unchanged: 0/0
+  2090 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  2091 ;;      Params:         4       0       0       0       0       0       0
+  2092 ;;      Locals:         3       0       0       0       0       0       0
+  2093 ;;      Temps:          2       0       0       0       0       0       0
+  2094 ;;      Totals:         9       0       0       0       0       0       0
+  2095 ;;Total ram usage:        9 bytes
+  2096 ;; Hardware stack levels used:    1
+  2097 ;; Hardware stack levels required when called:    1
+  2098 ;; This function calls:
+  2099 ;;		Nothing
+  2100 ;; This function is called by:
+  2101 ;;		_main
+  2102 ;; This function uses a non-reentrant model
+  2103 ;;
+  2104                           
+  2105                           	psect	text9
+  2106  0005D2                     __ptext9:
+  2107                           	opt stack 0
+  2108  0005D2                     _CRC16:
+  2109                           	opt stack 29
+  2110                           
+  2111                           ;newmain.c: 259: static const uint16_t wCRCTable[] = {
+  2112                           ;newmain.c: 260: 0X0000, 0XC0C1, 0XC181, 0X0140, 0XC301, 0X03C0, 0X0280, 0XC241,
+  2113                           ;newmain.c: 261: 0XC601, 0X06C0, 0X0780, 0XC741, 0X0500, 0XC5C1, 0XC481, 0X0440,
+  2114                           ;newmain.c: 262: 0XCC01, 0X0CC0, 0X0D80, 0XCD41, 0X0F00, 0XCFC1, 0XCE81, 0X0E40,
+  2115                           ;newmain.c: 263: 0X0A00, 0XCAC1, 0XCB81, 0X0B40, 0XC901, 0X09C0, 0X0880, 0XC841,
+  2116                           ;newmain.c: 264: 0XD801, 0X18C0, 0X1980, 0XD941, 0X1B00, 0XDBC1, 0XDA81, 0X1A40,
+  2117                           ;newmain.c: 265: 0X1E00, 0XDEC1, 0XDF81, 0X1F40, 0XDD01, 0X1DC0, 0X1C80, 0XDC41,
+  2118                           
+  2119                           ; BSR set to: 15
+  2120                           ;incstack = 0
+  2121  0005D2  6818               	setf	CRC16@wCRCWord,c
+  2122  0005D4  6819               	setf	CRC16@wCRCWord+1,c
+  2123                           
+  2124                           ;newmain.c: 297: while (wLength--) {
+  2125  0005D6  D01E               	goto	l1182
+  2126  0005D8                     l1174:
+  2127                           
+  2128                           ;newmain.c: 298: nTemp = *nData++ ^ wCRCWord;
+  2129  0005D8  C011  FFD9         	movff	CRC16@nData,fsr2l
+  2130  0005DC  C012  FFDA         	movff	CRC16@nData+1,fsr2h
+  2131  0005E0  50DF               	movf	indf2,w,c
+  2132  0005E2  1818               	xorwf	CRC16@wCRCWord,w,c
+  2133  0005E4  6E17               	movwf	CRC16@nTemp,c
+  2134  0005E6  4A11               	infsnz	CRC16@nData,f,c
+  2135  0005E8  2A12               	incf	CRC16@nData+1,f,c
+  2136                           
+  2137                           ;newmain.c: 299: wCRCWord >>= 8;
+  2138  0005EA  5019               	movf	CRC16@wCRCWord+1,w,c
+  2139  0005EC  6E18               	movwf	CRC16@wCRCWord,c
+  2140  0005EE  6A19               	clrf	CRC16@wCRCWord+1,c
+  2141                           
+  2142                           ;newmain.c: 300: wCRCWord ^= wCRCTable[nTemp];
+  2143  0005F0  5017               	movf	CRC16@nTemp,w,c
+  2144  0005F2  0D02               	mullw	2
+  2145  0005F4  0EFF               	movlw	low CRC16@wCRCTable
+  2146  0005F6  24F3               	addwf	prodl,w,c
+  2147  0005F8  6EF6               	movwf	tblptrl,c
+  2148  0005FA  0E7D               	movlw	high CRC16@wCRCTable
+  2149  0005FC  20F4               	addwfc	prodh,w,c
+  2150  0005FE  6EF7               	movwf	tblptrh,c
+  2151  000600                     	if	0	;There are less than 3 active tblptr bytes
+  2152  000600                     	endif
+  2153  000600  0009               	tblrd		*+
+  2154  000602  CFF5 F015          	movff	tablat,??_CRC16
+  2155  000606  0009               	tblrd		*+
+  2156  000608  CFF5 F016          	movff	tablat,??_CRC16+1
+  2157  00060C  5015               	movf	??_CRC16,w,c
+  2158  00060E  1A18               	xorwf	CRC16@wCRCWord,f,c
+  2159  000610  5016               	movf	??_CRC16+1,w,c
+  2160  000612  1A19               	xorwf	CRC16@wCRCWord+1,f,c
+  2161  000614                     l1182:
+  2162  000614  0613               	decf	CRC16@wLength,f,c
+  2163  000616  A0D8               	btfss	status,0,c
+  2164  000618  0614               	decf	CRC16@wLength+1,f,c
+  2165  00061A  2813               	incf	CRC16@wLength& (0+255),w,c
+  2166  00061C  B4D8               	btfsc	status,2,c
+  2167  00061E  2814               	incf	(CRC16@wLength+1)& (0+255),w,c
+  2168  000620  A4D8               	btfss	status,2,c
+  2169  000622  D7DA               	goto	l1174
+  2170                           
+  2171                           ;newmain.c: 301: }
+  2172                           ;newmain.c: 302: return wCRCWord;
+  2173  000624  C018  F011         	movff	CRC16@wCRCWord,?_CRC16
+  2174  000628  C019  F012         	movff	CRC16@wCRCWord+1,?_CRC16+1
+  2175  00062C  0012               	return	
+  2176  00062E                     __end_of_CRC16:
+  2177                           	opt stack 0
+  2178                           tblptru	equ	0xFF8
+  2179                           tblptrh	equ	0xFF7
+  2180                           tblptrl	equ	0xFF6
+  2181                           tablat	equ	0xFF5
+  2182                           prodh	equ	0xFF4
+  2183                           prodl	equ	0xFF3
+  2184                           intcon	equ	0xFF2
+  2185                           postinc0	equ	0xFEE
+  2186                           wreg	equ	0xFE8
+  2187                           indf1	equ	0xFE7
+  2188                           fsr1h	equ	0xFE2
+  2189                           fsr1l	equ	0xFE1
+  2190                           indf2	equ	0xFDF
+  2191                           fsr2h	equ	0xFDA
+  2192                           fsr2l	equ	0xFD9
+  2193                           status	equ	0xFD8
+  2194                           
+  2195 ;; *************** function _isr *****************
+  2196 ;; Defined at:
+  2197 ;;		line 205 in file "newmain.c"
+  2198 ;; Parameters:    Size  Location     Type
+  2199 ;;		None
+  2200 ;; Auto vars:     Size  Location     Type
+  2201 ;;		None
+  2202 ;; Return value:  Size  Location     Type
+  2203 ;;		None               void
+  2204 ;; Registers used:
+  2205 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+  2206 ;; Tracked objects:
+  2207 ;;		On entry : 0/0
+  2208 ;;		On exit  : 0/0
+  2209 ;;		Unchanged: 0/0
+  2210 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  2211 ;;      Params:         0       0       0       0       0       0       0
+  2212 ;;      Locals:         0       0       0       0       0       0       0
+  2213 ;;      Temps:         16       0       0       0       0       0       0
+  2214 ;;      Totals:        16       0       0       0       0       0       0
+  2215 ;;Total ram usage:       16 bytes
+  2216 ;; Hardware stack levels used:    1
+  2217 ;; This function calls:
+  2218 ;;		Nothing
+  2219 ;; This function is called by:
+  2220 ;;		Interrupt level 2
+  2221 ;; This function uses a non-reentrant model
+  2222 ;;
+  2223                           
+  2224                           	psect	intcode
+  2225  000008                     __pintcode:
+  2226                           	opt stack 0
+  2227  000008                     _isr:
+  2228                           	opt stack 27
+  2229                           
+  2230                           ;incstack = 0
+  2231  000008  CFFA F003          	movff	pclath,??_isr+2
+  2232  00000C  CFFB F004          	movff	pclatu,??_isr+3
+  2233  000010  CFE9 F005          	movff	fsr0l,??_isr+4
+  2234  000014  CFEA F006          	movff	fsr0h,??_isr+5
+  2235  000018  CFE1 F007          	movff	fsr1l,??_isr+6
+  2236  00001C  CFE2 F008          	movff	fsr1h,??_isr+7
+  2237  000020  CFD9 F009          	movff	fsr2l,??_isr+8
+  2238  000024  CFDA F00A          	movff	fsr2h,??_isr+9
+  2239  000028  CFF3 F00B          	movff	prodl,??_isr+10
+  2240  00002C  CFF4 F00C          	movff	prodh,??_isr+11
+  2241  000030  CFF6 F00D          	movff	tblptrl,??_isr+12
+  2242  000034  CFF7 F00E          	movff	tblptrh,??_isr+13
+  2243  000038  CFF8 F00F          	movff	tblptru,??_isr+14
+  2244  00003C  CFF5 F010          	movff	tablat,??_isr+15
+  2245                           
+  2246                           ;newmain.c: 207: if (RC1IF) {
+  2247  000040  AA9E               	btfss	3998,5,c	;volatile
+  2248  000042  D010               	goto	i2l1444
+  2249                           
+  2250                           ;newmain.c: 208: rcv_buf[rcv_cnt] = RCREG;
+  2251  000044  0100               	movlb	0	; () banked
+  2252  000046  0E60               	movlw	low _rcv_buf
+  2253  000048  242A               	addwf	_rcv_cnt,w,c
+  2254  00004A  6ED9               	movwf	fsr2l,c
+  2255  00004C  0100               	movlb	0	; () banked
+  2256  00004E  0E00               	movlw	high _rcv_buf
+  2257  000050  202B               	addwfc	_rcv_cnt+1,w,c
+  2258  000052  6EDA               	movwf	fsr2h,c
+  2259  000054  CFAE FFDF          	movff	4014,indf2	;volatile
+  2260                           
+  2261                           ; BSR set to: 0
+  2262                           ;newmain.c: 209: rcv_cnt++;
+  2263  000058  4A2A               	infsnz	_rcv_cnt,f,c
+  2264  00005A  2A2B               	incf	_rcv_cnt+1,f,c
+  2265                           
+  2266                           ; BSR set to: 0
+  2267                           ;newmain.c: 210: timeout_cnt = 0;
+  2268  00005C  0E00               	movlw	0
+  2269  00005E  6E2F               	movwf	_timeout_cnt+1,c
+  2270  000060  0E00               	movlw	0
+  2271  000062  6E2E               	movwf	_timeout_cnt,c
+  2272  000064                     i2l1444:
+  2273                           
+  2274                           ;newmain.c: 211: }
+  2275                           ;newmain.c: 213: if (TMR0IF) {
+  2276  000064  A4F2               	btfss	intcon,2,c	;volatile
+  2277  000066  D063               	goto	i2l167
+  2278                           
+  2279                           ;newmain.c: 214: TMR0IF = 0;
+  2280  000068  94F2               	bcf	intcon,2,c	;volatile
+  2281                           
+  2282                           ;newmain.c: 215: TMR0 = 128;
+  2283  00006A  0E00               	movlw	0
+  2284  00006C  6ED7               	movwf	4055,c	;volatile
+  2285  00006E  0E80               	movlw	128
+  2286  000070  6ED6               	movwf	4054,c	;volatile
+  2287                           
+  2288                           ;newmain.c: 217: if (RCSTAbits.FERR || RCSTAbits.OERR) {
+  2289  000072  B4AB               	btfsc	4011,2,c	;volatile
+  2290  000074  D002               	goto	i2l159
+  2291  000076  A2AB               	btfss	4011,1,c	;volatile
+  2292  000078  D005               	goto	i2l1454
+  2293  00007A                     i2l159:
+  2294                           
+  2295                           ;newmain.c: 218: RCSTAbits.SPEN = 0;
+  2296  00007A  9EAB               	bcf	4011,7,c	;volatile
+  2297                           
+  2298                           ;newmain.c: 219: TXSTAbits.TXEN = 1;
+  2299  00007C  8AAC               	bsf	4012,5,c	;volatile
+  2300                           
+  2301                           ;newmain.c: 220: RCSTAbits.CREN = 1;
+  2302  00007E  88AB               	bsf	4011,4,c	;volatile
+  2303                           
+  2304                           ;newmain.c: 221: TXSTAbits.SYNC = 0;
+  2305  000080  98AC               	bcf	4012,4,c	;volatile
+  2306                           
+  2307                           ;newmain.c: 222: RCSTAbits.SPEN = 1;
+  2308  000082  8EAB               	bsf	4011,7,c	;volatile
+  2309  000084                     i2l1454:
+  2310                           
+  2311                           ;newmain.c: 223: }
+  2312                           ;newmain.c: 226: timeout_cnt++;
+  2313  000084  4A2E               	infsnz	_timeout_cnt,f,c
+  2314  000086  2A2F               	incf	_timeout_cnt+1,f,c
+  2315                           
+  2316                           ;newmain.c: 227: if (timeout_cnt >= 10) {
+  2317  000088  502F               	movf	_timeout_cnt+1,w,c
+  2318  00008A  0A80               	xorlw	128
+  2319  00008C  0F80               	addlw	-128
+  2320  00008E  0E0A               	movlw	10
+  2321  000090  B4D8               	btfsc	status,2,c
+  2322  000092  5C2E               	subwf	_timeout_cnt,w,c
+  2323  000094  A0D8               	btfss	status,0,c
+  2324  000096  D021               	goto	i2l1466
+  2325                           
+  2326                           ;newmain.c: 228: if (rcv_cnt > 7) {
+  2327  000098  502B               	movf	_rcv_cnt+1,w,c
+  2328  00009A  0A80               	xorlw	128
+  2329  00009C  0F80               	addlw	-128
+  2330  00009E  0E08               	movlw	8
+  2331  0000A0  B4D8               	btfsc	status,2,c
+  2332  0000A2  5C2A               	subwf	_rcv_cnt,w,c
+  2333  0000A4  A0D8               	btfss	status,0,c
+  2334  0000A6  D011               	goto	i2l1464
+  2335                           
+  2336                           ;newmain.c: 229: if (rcv_buf[0] == adr) {
+  2337  0000A8  0100               	movlb	0	; () banked
+  2338  0000AA  5160               	movf	_rcv_buf& (0+255),w,b
+  2339  0000AC  6E01               	movwf	??_isr& (0+255),c
+  2340  0000AE  6A02               	clrf	(??_isr+1)& (0+255),c
+  2341  0000B0  5042               	movf	_adr+1,w,c
+  2342  0000B2  1802               	xorwf	??_isr+1,w,c
+  2343  0000B4  E102               	bnz	i2u72_45
+  2344  0000B6  5041               	movf	_adr,w,c
+  2345  0000B8  1801               	xorwf	??_isr,w,c
+  2346  0000BA                     i2u72_45:
+  2347  0000BA  A4D8               	btfss	status,2,c
+  2348  0000BC  D006               	goto	i2l1464
+  2349                           
+  2350                           ; BSR set to: 0
+  2351                           ;newmain.c: 230: rcv_flag = 1;
+  2352  0000BE  0100               	movlb	(_rcv_flag/(0+8)) shr (0+8)
+  2353  0000C0  8040               	bsf	_rcv_flag/(0+8),_rcv_flag& (0+7),c
+  2354                           
+  2355                           ;newmain.c: 231: rcv_len = rcv_cnt;
+  2356  0000C2  C02A  F02C         	movff	_rcv_cnt,_rcv_len
+  2357  0000C6  C02B  F02D         	movff	_rcv_cnt+1,_rcv_len+1
+  2358  0000CA                     i2l1464:
+  2359                           
+  2360                           ;newmain.c: 232: }
+  2361                           ;newmain.c: 233: }
+  2362                           ;newmain.c: 234: rcv_cnt = 0;
+  2363  0000CA  0E00               	movlw	0
+  2364  0000CC  6E2B               	movwf	_rcv_cnt+1,c
+  2365  0000CE  0E00               	movlw	0
+  2366  0000D0  6E2A               	movwf	_rcv_cnt,c
+  2367                           
+  2368                           ;newmain.c: 235: timeout_cnt = 0;
+  2369  0000D2  0E00               	movlw	0
+  2370  0000D4  6E2F               	movwf	_timeout_cnt+1,c
+  2371  0000D6  0E00               	movlw	0
+  2372  0000D8  6E2E               	movwf	_timeout_cnt,c
+  2373  0000DA                     i2l1466:
+  2374                           
+  2375                           ;newmain.c: 236: }
+  2376                           ;newmain.c: 237: if (!tx_flag) {
+  2377  0000DA  0100               	movlb	(_tx_flag/(0+8)) shr (0+8)
+  2378  0000DC  A240               	btfss	_tx_flag/(0+8),_tx_flag& (0+7),c
+  2379                           
+  2380                           ;newmain.c: 238: PORTCbits.RC5 = 0;
+  2381  0000DE  9A82               	bcf	3970,5,c	;volatile
+  2382                           
+  2383                           ;newmain.c: 239: }
+  2384                           ;newmain.c: 242: if (tx_flag && TXSTAbits.TRMT) {
+  2385  0000E0  0100               	movlb	(_tx_flag/(0+8)) shr (0+8)
+  2386  0000E2  B240               	btfsc	_tx_flag/(0+8),_tx_flag& (0+7),c
+  2387  0000E4  A2AC               	btfss	4012,1,c	;volatile
+  2388  0000E6  D023               	goto	i2l167
+  2389                           
+  2390                           ;newmain.c: 243: PORTCbits.RC5 = 1;
+  2391  0000E8  8A82               	bsf	3970,5,c	;volatile
+  2392                           
+  2393                           ;newmain.c: 244: if (tx_cnt < tx_len) {
+  2394  0000EA  5031               	movf	_tx_cnt+1,w,c
+  2395  0000EC  0A80               	xorlw	128
+  2396  0000EE  6E01               	movwf	??_isr& (0+255),c
+  2397  0000F0  5032               	movf	_tx_len,w,c
+  2398  0000F2  5C30               	subwf	_tx_cnt,w,c
+  2399  0000F4  5033               	movf	_tx_len+1,w,c
+  2400  0000F6  0A80               	xorlw	128
+  2401  0000F8  5801               	subwfb	??_isr& (0+255),w,c
+  2402  0000FA  B0D8               	btfsc	status,0,c
+  2403  0000FC  D00D               	goto	i2l1480
+  2404                           
+  2405                           ;newmain.c: 245: TXREG = tx_buf[tx_cnt];
+  2406  0000FE  0100               	movlb	0	; () banked
+  2407  000100  0E8D               	movlw	low _tx_buf
+  2408  000102  2430               	addwf	_tx_cnt,w,c
+  2409  000104  6ED9               	movwf	fsr2l,c
+  2410  000106  0100               	movlb	0	; () banked
+  2411  000108  0E00               	movlw	high _tx_buf
+  2412  00010A  2031               	addwfc	_tx_cnt+1,w,c
+  2413  00010C  6EDA               	movwf	fsr2h,c
+  2414  00010E  50DF               	movf	indf2,w,c
+  2415  000110  6EAD               	movwf	4013,c	;volatile
+  2416                           
+  2417                           ; BSR set to: 0
+  2418                           ;newmain.c: 246: tx_cnt++;
+  2419  000112  4A30               	infsnz	_tx_cnt,f,c
+  2420  000114  2A31               	incf	_tx_cnt+1,f,c
+  2421                           
+  2422                           ;newmain.c: 247: } else {
+  2423  000116  D00B               	goto	i2l167
+  2424  000118                     i2l1480:
+  2425                           
+  2426                           ;newmain.c: 248: tx_cnt = 0;
+  2427  000118  0E00               	movlw	0
+  2428  00011A  6E31               	movwf	_tx_cnt+1,c
+  2429  00011C  0E00               	movlw	0
+  2430  00011E  6E30               	movwf	_tx_cnt,c
+  2431                           
+  2432                           ;newmain.c: 249: tx_len = 0;
+  2433  000120  0E00               	movlw	0
+  2434  000122  6E33               	movwf	_tx_len+1,c
+  2435  000124  0E00               	movlw	0
+  2436  000126  6E32               	movwf	_tx_len,c
+  2437                           
+  2438                           ;newmain.c: 250: PORTCbits.RC5 = 0;
+  2439  000128  9A82               	bcf	3970,5,c	;volatile
+  2440                           
+  2441                           ;newmain.c: 251: tx_flag = 0;
+  2442  00012A  0100               	movlb	(_tx_flag/(0+8)) shr (0+8)
+  2443  00012C  9240               	bcf	_tx_flag/(0+8),_tx_flag& (0+7),c
+  2444  00012E                     i2l167:
+  2445  00012E  C010  FFF5         	movff	??_isr+15,tablat
+  2446  000132  C00F  FFF8         	movff	??_isr+14,tblptru
+  2447  000136  C00E  FFF7         	movff	??_isr+13,tblptrh
+  2448  00013A  C00D  FFF6         	movff	??_isr+12,tblptrl
+  2449  00013E  C00C  FFF4         	movff	??_isr+11,prodh
+  2450  000142  C00B  FFF3         	movff	??_isr+10,prodl
+  2451  000146  C00A  FFDA         	movff	??_isr+9,fsr2h
+  2452  00014A  C009  FFD9         	movff	??_isr+8,fsr2l
+  2453  00014E  C008  FFE2         	movff	??_isr+7,fsr1h
+  2454  000152  C007  FFE1         	movff	??_isr+6,fsr1l
+  2455  000156  C006  FFEA         	movff	??_isr+5,fsr0h
+  2456  00015A  C005  FFE9         	movff	??_isr+4,fsr0l
+  2457  00015E  C004  FFFB         	movff	??_isr+3,pclatu
+  2458  000162  C003  FFFA         	movff	??_isr+2,pclath
+  2459  000166  0011               	retfie		f
+  2460  000168                     __end_of_isr:
+  2461                           	opt stack 0
+  2462                           pclatu	equ	0xFFB
+  2463                           pclath	equ	0xFFA
+  2464                           tblptru	equ	0xFF8
+  2465                           tblptrh	equ	0xFF7
+  2466                           tblptrl	equ	0xFF6
+  2467                           tablat	equ	0xFF5
+  2468                           prodh	equ	0xFF4
+  2469                           prodl	equ	0xFF3
+  2470                           intcon	equ	0xFF2
+  2471                           postinc0	equ	0xFEE
+  2472                           fsr0h	equ	0xFEA
+  2473                           fsr0l	equ	0xFE9
+  2474                           wreg	equ	0xFE8
+  2475                           indf1	equ	0xFE7
+  2476                           fsr1h	equ	0xFE2
+  2477                           fsr1l	equ	0xFE1
+  2478                           indf2	equ	0xFDF
+  2479                           fsr2h	equ	0xFDA
+  2480                           fsr2l	equ	0xFD9
+  2481                           status	equ	0xFD8
+  2482                           pclatu	equ	0xFFB
+  2483                           pclath	equ	0xFFA
+  2484                           tblptru	equ	0xFF8
+  2485                           tblptrh	equ	0xFF7
+  2486                           tblptrl	equ	0xFF6
+  2487                           tablat	equ	0xFF5
+  2488                           prodh	equ	0xFF4
+  2489                           prodl	equ	0xFF3
+  2490                           intcon	equ	0xFF2
+  2491                           postinc0	equ	0xFEE
+  2492                           fsr0h	equ	0xFEA
+  2493                           fsr0l	equ	0xFE9
+  2494                           wreg	equ	0xFE8
+  2495                           indf1	equ	0xFE7
+  2496                           fsr1h	equ	0xFE2
+  2497                           fsr1l	equ	0xFE1
+  2498                           indf2	equ	0xFDF
+  2499                           fsr2h	equ	0xFDA
+  2500                           fsr2l	equ	0xFD9
+  2501                           status	equ	0xFD8
+  2502                           
+  2503                           	psect	rparam
+  2504  0000                     pclatu	equ	0xFFB
+  2505                           pclath	equ	0xFFA
+  2506                           tblptru	equ	0xFF8
+  2507                           tblptrh	equ	0xFF7
+  2508                           tblptrl	equ	0xFF6
+  2509                           tablat	equ	0xFF5
+  2510                           prodh	equ	0xFF4
+  2511                           prodl	equ	0xFF3
+  2512                           intcon	equ	0xFF2
+  2513                           postinc0	equ	0xFEE
+  2514                           fsr0h	equ	0xFEA
+  2515                           fsr0l	equ	0xFE9
+  2516                           wreg	equ	0xFE8
+  2517                           indf1	equ	0xFE7
+  2518                           fsr1h	equ	0xFE2
+  2519                           fsr1l	equ	0xFE1
+  2520                           indf2	equ	0xFDF
+  2521                           fsr2h	equ	0xFDA
+  2522                           fsr2l	equ	0xFD9
+  2523                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    512
+    Data        2
+    BSS         207
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95     41      66
+    BANK0           160      0     115
+    BANK1           256      0      70
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    CRC16@nData	PTR const unsigned char  size(2) Largest target is 70
+		 -> tx_buf(BANK0[70]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_CRC16
+    _I2C_Start->_I2C_Write
+
+Critical Paths under _isr in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _isr in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _isr in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _isr in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _isr in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _isr in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _isr in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                16    11      5    1151
+                                             25 COMRAM    16    11      5
+                              _CRC16
+                           _I2C_Init
+                           _I2C_Read
+                          _I2C_Start
+                           _I2C_Stop
+                          _I2C_Write
+ ---------------------------------------------------------------------------------
+ (1) _I2C_Stop                                             0     0      0       0
+                          _I2C_Ready
+ ---------------------------------------------------------------------------------
+ (1) _I2C_Start                                            1     1      0      44
+                                             17 COMRAM     1     1      0
+                          _I2C_Write
+ ---------------------------------------------------------------------------------
+ (1) _I2C_Write                                            1     1      0      22
+                                             16 COMRAM     1     1      0
+                          _I2C_Ready
+ ---------------------------------------------------------------------------------
+ (1) _I2C_Read                                             3     3      0      46
+                                             16 COMRAM     3     3      0
+                            _I2C_Ack
+                           _I2C_Nack
+                          _I2C_Ready
+ ---------------------------------------------------------------------------------
+ (2) _I2C_Ready                                            0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _I2C_Nack                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _I2C_Ack                                              0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _I2C_Init                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _CRC16                                                9     5      4     857
+                                             16 COMRAM     9     5      4
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (4) _isr                                                 16    16      0       0
+                                              0 COMRAM    16    16      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 4
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _CRC16
+   _I2C_Init
+   _I2C_Read
+     _I2C_Ack
+     _I2C_Nack
+     _I2C_Ready
+   _I2C_Start
+     _I2C_Write
+       _I2C_Ready
+   _I2C_Stop
+     _I2C_Ready
+   _I2C_Write
+     _I2C_Ready
+
+ _isr (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             5FF      0       0      16        0.0%
+EEDATA             100      0       0       0        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       7        0.0%
+BANK2              100      0       0       8        0.0%
+BITBANK1           100      0       0       5        0.0%
+BANK1              100      0      46       6       27.3%
+BITBANK0            A0      0       0       3        0.0%
+BANK0               A0      0      73       4       71.9%
+BITCOMRAM           5F      0       1       0        1.1%
+COMRAM              5F     29      42       1       69.5%
+BITSFR_1             0      0       0      40        0.0%
+SFR_1                0      0       0      40        0.0%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      FB       9        0.0%
+DATA                 0      0      FB      17        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.33 build 59893 
+Symbol Table                                                                                   Fri Jan 22 22:36:54 2021
+
+                           _x 003E            __size_of_I2C_Ready 000E            __size_of_I2C_Start 0016  
+                 _SSPSTATbits 000FC7            __size_of_I2C_Write 0016                            _v1 003C  
+                          _v2 0034                            _v3 0036                            _v4 0038  
+                          _v5 003A                            _v7 0100                           l202 06F4  
+                         l122 01F0                           l140 0484                           l213 069A  
+                         l223 0710                           l136 037C                           l217 071A  
+                         l209 0682                           l181 06C6                           l191 0702  
+                         l188 06FE                           _GIE 007F97                           u807 0514  
+                         u817 053C                           u827 054C                           u777 03B2  
+                         u787 03C2                           u797 0504                           _adr 0041  
+             __end_of_I2C_Ack 0720                           _isr 0008                           wreg 000FE8  
+                        l1216 0696                          l1304 0334                          l1164 06EA  
+                        l1174 05D8                          l1182 0614                          l1422 057A  
+                        l1254 01B8                          l1246 0198                          l1432 05C8  
+                        l1256 01C4                          l1418 055A                          l1370 044C  
+                        l1290 0270                          l1372 0458                          l1364 0432  
+                        l1276 021A                          l1294 02A4                          l1288 0250  
+                        l1394 04E0                          ?_isr 0001                          _PEIE 007F96  
+                        _RCIE 007CED                          _RCIP 007CFD                          _TMR0 000FD6  
+                        _main 016C                          _var2 003D              __end_of_I2C_Nack 0716  
+            __end_of_I2C_Init 06C2              __end_of_I2C_Read 06A2                          fsr0h 000FEA  
+                        fsr1h 000FE2                          fsr0l 000FE9                          fsr2h 000FDA  
+                        indf1 000FE7                          fsr1l 000FE1                          indf2 000FDF  
+                        fsr2l 000FD9              __end_of_I2C_Stop 06FE                          pclat 000FFA  
+                        prodh 000FF4                          prodl 000FF3                          start 0168  
+                       ??_isr 0001                         ?_main 001A                         _BCLIF 007D0B  
+                       _CRC16 05D2                         _T0CON 000FD5                         _RC1IF 007CF5  
+                       i2l159 007A                         i2l167 012E                         _RCREG 000FAE  
+                       _SPBRG 000FAF                         _PORTC 000F82                         _TRISC 000F94  
+                       _SSPIE 007CEB                         _SSPIF 007CF3                         _TXREG 000FAD  
+           __end_of_I2C_Ready 070C                         main@i 0026                         main@q 0028  
+           __end_of_I2C_Start 06D8                __pbitbssCOMRAM 0200             __end_of_I2C_Write 06EE  
+                       tablat 000FF5                         status 000FD8                __CFG_FOSC$HSHP 000000  
+             __initialization 062E                  __end_of_main 05D2                     ??_I2C_Ack 0011  
+                      ??_main 001F                        ?_CRC16 0011                 __activetblptr 000002  
+                      _ANSELC 000F3A                        i2l1444 0064                        i2l1454 0084  
+                      i2l1480 0118                        i2l1464 00CA                        i2l1466 00DA  
+              __CFG_WDTEN$OFF 000000                        _TMR0IE 007F95                        _TMR0IF 007F92  
+                      _SSPADD 000FC8                        _TRISC3 007CA3                        _TRISC4 007CA4  
+                      _SSPBUF 000FC9                        clear_0 0634                        clear_1 0640  
+                      clear_2 064E                        _tx_buf 008D                        _tx_cnt 0030  
+                      _tx_len 0032                  __pdataCOMRAM 0041                     ?_I2C_Nack 0001  
+                   ?_I2C_Init 0001                     ?_I2C_Read 0001                     ?_I2C_Stop 0001  
+                __mediumconst 7DFE                        tblptrh 000FF7                        tblptrl 000FF6  
+                      tblptru 000FF8                    __accesstop 0060       __end_of__initialization 066C  
+               __end_of_CRC16 062E                __pcstackCOMRAM 0001                       ??_CRC16 0015  
+                  ??_I2C_Nack 0011                    ??_I2C_Init 0011                    ??_I2C_Read 0011  
+                  ??_I2C_Stop 0011                    __pbssBANK0 0060                    __pbssBANK1 0100  
+                I2C_Read@flag 0011                I2C_Read@buffer 0012                       _I2C_Ack 0716  
+                  CRC16@nData 0011                    CRC16@nTemp 0017                       i2u72_45 00BA  
+                     _SSPCON1 000FC6                       _SSPCON2 000FC5                       _SSPSTAT 000FC7  
+                   _I2C_Ready 06FE                     _I2C_Start 06C2                     _I2C_Write 06D8  
+                     __Hparam 0000                       __Lparam 0000                       __pcinit 062E  
+                     __ramtop 0600                       __ptext0 016C                       __ptext1 06EE  
+                     __ptext2 06C2                       __ptext3 06D8                       __ptext4 0676  
+                     __ptext5 06FE                       __ptext6 070C                       __ptext7 0716  
+                     __ptext8 06A2                       __ptext9 05D2                  __size_of_isr 0160  
+                     _rcv_buf 0060                       _rcv_cnt 002A                       _rcv_len 002C  
+                     _tx_flag 0201          end_of_initialization 066C                  CRC16@wLength 0013  
+               __Lmediumconst 7DFE                    ?_I2C_Ready 0001                    ?_I2C_Start 0001  
+                  ?_I2C_Write 0001                     _RCSTAbits 000FAB                       postinc0 000FEE  
+                   _PORTCbits 000F82             __size_of_I2C_Nack 000A             __size_of_I2C_Init 0020  
+           __size_of_I2C_Read 002C             __size_of_I2C_Stop 0010                     _TXSTAbits 000FAC  
+                 _BAUDCONbits 000FB8                 __pidataCOMRAM 0720           start_initialization 062E  
+                 __end_of_isr 0168                   ??_I2C_Ready 0011                   ??_I2C_Start 0012  
+                 ??_I2C_Write 0011                      ?_I2C_Ack 0001                   __pbssCOMRAM 002A  
+                   __pintcode 0008                 __pmediumconst 7DFE                __size_of_CRC16 005C  
+                    _I2C_Nack 070C                      _I2C_Init 06A2                      _I2C_Read 0676  
+                    _I2C_Stop 06EE                CRC16@wCRCTable 7DFF              __size_of_I2C_Ack 000A  
+                   main@i_909 0024        __end_ofCRC16@wCRCTable 7FFF  I2C_Start@slave_write_address 0012  
+                    __Hrparam 0000                      __Lrparam 0000                 I2C_Write@data 0011  
+               __size_of_main 0466                 CRC16@wCRCWord 0018                      _rcv_flag 0200  
+                    main@argc 001A                      main@argv 001C                      intlevel2 0000  
+                 _SSPCON2bits 000FC5                   _timeout_cnt 002E  
